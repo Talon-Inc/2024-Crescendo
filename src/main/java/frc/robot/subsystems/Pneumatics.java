@@ -15,8 +15,8 @@ public class Pneumatics extends SubsystemBase {
   /** Creates a new Pneumatics. */
   private PneumaticHub pneumaticHub = new PneumaticHub();
   private DoubleSolenoid intake_Piston = PneumaticHub.makeDoublesolenoid(OPEN_CHANNEL, CLOSE_CHANNEL);
-  
-}
+  private DoubleSolenoid actuator_Piston = PneumaticHub.makeDoublesolenoid(OPEN_CHANNEL2, CLOSE_CHANNEL2);
+} 
 
 public Pneumatics() {
   pneumaticHub.enableCompressorDigital();
