@@ -4,8 +4,8 @@
 
 package frc.robot;
 
-import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -27,16 +27,17 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
   public static final class ShooterConstants{
     public static final double kFreeSpeedRpm = 5676;
-    public static final CANSparkLowLevel.MotorType kMotorType = CANSparkLowLevel.MotorType.kBrushless;
+    public static final MotorType kMotorType = MotorType.kBrushless;
     //change can ids later
-    public static final int FernaggleFlabberCan1ID = 0;
-    public static final int FernaggleFlabberCan2ID = 0;
+    public static final int kFernaggleFlabberCan1ID = 13;
+    public static final int kFernaggleFlabberCan2ID = 14;
 
     //Change PID values later
     public static final int kShooterP = 0;
     public static final int kShooterI = 0;
     public static final int kShooterD = 0;
   }
+
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
