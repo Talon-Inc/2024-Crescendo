@@ -13,13 +13,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Pneumatics extends SubsystemBase {
   /** Creates a new Pneumatics. */
-  private PneumaticHub PneumaticHub = null;
-  private DoubleSolenoid intake_Piston = null;
+  private PneumaticHub pneumaticHub = new PneumaticHub();
+  private DoubleSolenoid intake_Piston = PneumaticHub.makeDoublesolenoid(OPEN_CHANNEL, CLOSE_CHANNEL);
+  
 }
-public Pneumatics(){
-  PneumaticHub = new PneumaticHub();
-  PneumaticHub.enableCompressor
-  intake_Piston = PneumaticHub.makeDoublesolenoid(OPEN_CHANNEL, CLOSE_CHANNEL);
+
+public Pneumatics() {
+  pneumaticHub.enableCompressorDigital();
 }
 
 public void Open(){
