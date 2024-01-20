@@ -27,8 +27,8 @@ public final class Constants {
     public static final class PneumaticsConstants {
     public static final int CLOSE_CHANNEL = 0;
     public static final int OPEN_CHANNEL = 1;
-    public static final int OPEN_CHANNEL2 = 2;
-    public static final int CLOSE_CHANNEL2 = 3;
+    public static final int Up_CHANNEL = 2;
+    public static final int Down_CHANNEL = 3;
   }
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
