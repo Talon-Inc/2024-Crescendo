@@ -10,19 +10,19 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
-  private final CANSparkMax m_motor = new CANSparkMax(kIntakeCanId, kMotorType);
+  private final CANSparkMax m_intakeMotor = new CANSparkMax(kIntakeCanId, kMotorType);
 
   /** Creates a new Intake. */
   public Intake() {
-    m_motor.restoreFactoryDefaults();
+    m_intakeMotor.restoreFactoryDefaults();
 
-    m_motor.setSmartCurrentLimit(kCurrentLimit);
+    m_intakeMotor.setSmartCurrentLimit(kCurrentLimit);
 
-    m_motor.setIdleMode(kIntakeIdleMode);
+    m_intakeMotor.setIdleMode(kIntakeIdleMode);
   }
 
   public void spin() {
-    m_motor.set(kSpeed);
+    m_intakeMotor.set(kSpeed);
   }
 
   @Override
