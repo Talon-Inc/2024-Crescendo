@@ -12,14 +12,14 @@ import frc.robot.subsystems.Pneumatics;
 import frc.robot.Constants.ShooterConstants;
 
 
-public class ShooterArm extends SubsystemBase {
+public class Shooter extends SubsystemBase {
 
-  private final CANSparkMax ArmShooter1 = new CANSparkMax(ShooterConstants.ArmShooter1CanId, ShooterConstants.kMotorType);
-  private final CANSparkMax Armshooter2 = new CANSparkMax(ShooterConstants.ArmShooter2CanId, ShooterConstants.kMotorType);
+  private final CANSparkMax FernaggleFlabber1 = new CANSparkMax(ShooterConstants.FernaggleFlabberCan1ID, ShooterConstants.kMotorType);
+  private final CANSparkMax FernaggleFlabber2 = new CANSparkMax(ShooterConstants.FernaggleFlabberCan2ID, ShooterConstants.kMotorType);
   
   
   /** Creates a new ShooterArm. */
-  public ShooterArm() {}
+  public Shooter() {}
 
   public void SetRPM(double rpm) {
     SmartDashboard.putNumber("Desired RPM", rpm);

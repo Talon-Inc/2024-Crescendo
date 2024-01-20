@@ -29,9 +29,8 @@ public final class Constants {
     public static final double kFreeSpeedRpm = 5676;
     public static final CANSparkLowLevel.MotorType kMotorType = CANSparkLowLevel.MotorType.kBrushless;
     //change can ids later
-    public static final int ArmShooter1CanId = 0;
-    public static final int ArmShooter2CanId = 0;
-    public static final int FernaggleFlabberCanID = 0;
+    public static final int FernaggleFlabberCan1ID = 0;
+    public static final int FernaggleFlabberCan2ID = 0;
 
     //Change PID values later
     public static final int kShooterP = 0;
