@@ -13,14 +13,20 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Climb extends SubsystemBase {
   private final CANSparkMax m_leftFrontMotor = new CANSparkMax(kClimbLeftCanId, kMotorType);
   private final CANSparkMax m_rightFrontMotor = new CANSparkMax(kClimbRightCanId, kMotorType);
+  
   /** Creates a new Climb. */
   public Climb() {
+    // add initialization for motors
     m_rightFrontMotor.follow(m_leftFrontMotor);
     m_rightFrontMotor.setInverted(true);
   }
 
-  public void ClimbRotate() {
+  public void climbUp() {
     m_leftFrontMotor.set(0.5);
+  }
+
+  public void climbDown() {
+    m_leftFrontMotor.set(-0.5);
   }
   
   @Override
