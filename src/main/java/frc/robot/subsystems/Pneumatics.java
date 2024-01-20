@@ -5,13 +5,35 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.PneumaticsConstants;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PneumaticHub;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Pneumatics extends SubsystemBase {
   /** Creates a new Pneumatics. */
-  public Pneumatics() {}
+  private PneumaticHub PneumaticHub = null;
+  private DoubleSolenoid intake_Piston = null;
+}
+public Pneumatics(){
+  PneumaticHub = new PneumaticHub();
+  PneumaticHub.enableCompressor
+  intake_Piston = PneumaticHub.makeDoublesolenoid(OPEN_CHANNEL, CLOSE_CHANNEL);
+}
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+public void Open(){
+intake_Piston.set(DoubleSolenoid.Value.kForward);
+}
+
+public void Close(){
+intake_Piston.set(DoubleSolenoid.Value.kReverse);
+}
+
+public void OPEN2(){
+ actuator_Piston.set(DoubleSolenoid.Value.kForward); 
+}
+
+public void close2(){
+actuator_Piston.set(DoubleSolenoid.Value.kReverse); 
 }
