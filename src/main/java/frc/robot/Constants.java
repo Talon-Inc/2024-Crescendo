@@ -31,6 +31,12 @@ public final class Constants {
     //change can ids later
     public static final int ArmShooter1CanId = 0;
     public static final int ArmShooter2CanId = 0;
+    public static final int FernaggleFlabberCanID = 0;
+
+    //Change PID values later
+    public static final int kShooterP = 0;
+    public static final int kShooterI = 0;
+    public static final int kShooterD = 0;
   }
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of

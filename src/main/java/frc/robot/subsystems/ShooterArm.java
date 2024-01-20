@@ -4,18 +4,30 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
 
+import frc.robot.subsystems.Pneumatics;
 import frc.robot.Constants.ShooterConstants;
+
 
 public class ShooterArm extends SubsystemBase {
 
   private final CANSparkMax ArmShooter1 = new CANSparkMax(ShooterConstants.ArmShooter1CanId, ShooterConstants.kMotorType);
   private final CANSparkMax Armshooter2 = new CANSparkMax(ShooterConstants.ArmShooter2CanId, ShooterConstants.kMotorType);
+  
+  
   /** Creates a new ShooterArm. */
   public ShooterArm() {}
 
+  public void SetRPM(double rpm) {
+    SmartDashboard.putNumber("Desired RPM", rpm);
+    /** figure out later  
+    SmartDashboard.putNumber("RPM Difference", )
+    */
+    
+  }
   public void aimUp() {}
 
   public void aimDown() {}
