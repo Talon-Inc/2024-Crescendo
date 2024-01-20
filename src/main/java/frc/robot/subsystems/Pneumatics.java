@@ -30,10 +30,10 @@ public void Close(){
 intake_Piston.set(DoubleSolenoid.Value.kReverse);
 }
 
-public void OPEN2(){
+public void Up(){
  actuator_Piston.set(DoubleSolenoid.Value.kForward); 
 }
 
-public void close2(){
+public void Down(){
 actuator_Piston.set(DoubleSolenoid.Value.kReverse); 
 }
