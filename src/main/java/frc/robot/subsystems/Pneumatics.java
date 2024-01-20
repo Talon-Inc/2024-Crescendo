@@ -5,7 +5,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.PneumaticsConstants;
+import static frc.robot.Constants.PneumaticsConstants.*;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticHub;
@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Pneumatics extends SubsystemBase {
   /** Creates a new Pneumatics. */
   private PneumaticHub pneumaticHub = new PneumaticHub();
-  private DoubleSolenoid intake_Piston = PneumaticHub.makeDoublesolenoid(OPEN_CHANNEL, CLOSE_CHANNEL);
-  private DoubleSolenoid actuator_Piston = PneumaticHub.makeDoublesolenoid(OPEN_CHANNEL2, CLOSE_CHANNEL2);
+  private DoubleSolenoid intake_Piston = pneumaticHub.makeDoubleSolenoid(OPEN_CHANNEL, CLOSE_CHANNEL);
+  private DoubleSolenoid actuator_Piston = pneumaticHub.makeDoubleSolenoid(OPEN_CHANNEL2, CLOSE_CHANNEL2);
 } 
 
 public Pneumatics() {
