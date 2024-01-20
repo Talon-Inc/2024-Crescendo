@@ -11,7 +11,7 @@ import frc.robot.subsystems.Pneumatics;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class ActuatorDown extends InstantCommand {
-  Pneumatics pneumatics;
+  private Pneumatics pneumatics;
 
   public ActuatorDown(Pneumatics pneumatics) {
     this.pneumatics = pneumatics;
@@ -21,6 +21,6 @@ public class ActuatorDown extends InstantCommand {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    pneumatics.Down();
+    pneumatics.down();
   }
 }

@@ -9,31 +9,24 @@ import static frc.robot.Constants.PneumaticsConstants.*;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticHub;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Pneumatics extends SubsystemBase {
+  private PneumaticHub p_pneumaticHub = new PneumaticHub();
+  private DoubleSolenoid p_actuatorLeft = p_pneumaticHub.makeDoubleSolenoid(kActuatorLeftOpen, kActuatorLeftClose);
+  private DoubleSolenoid p_actuatorRight = p_pneumaticHub.makeDoubleSolenoid(kActuatorRightClose, kActuatorRightOpen);
+  
   /** Creates a new Pneumatics. */
-  private PneumaticHub pneumaticHub = new PneumaticHub();
-  private DoubleSolenoid intake_Piston = pneumaticHub.makeDoubleSolenoid(OPEN_CHANNEL, CLOSE_CHANNEL);
-  private DoubleSolenoid actuator_Piston = pneumaticHub.makeDoubleSolenoid(OPEN_CHANNEL2, CLOSE_CHANNEL2);
-} 
+  public Pneumatics() {
+    p_pneumaticHub.enableCompressorDigital();
+  }
 
-public Pneumatics() {
-  pneumaticHub.enableCompressorDigital();
-}
+  public void up() {
+    p_actuatorLeft.set(DoubleSolenoid.Value.kForward);
+    p_actuatorRight.set(DoubleSolenoid.Value.kForward); 
+  }
 
-public void Open(){
-intake_Piston.set(DoubleSolenoid.Value.kForward);
-}
-
-public void Close(){
-intake_Piston.set(DoubleSolenoid.Value.kReverse);
-}
-
-public void Up(){
- actuator_Piston.set(DoubleSolenoid.Value.kForward); 
-}
-
-public void Down(){
-actuator_Piston.set(DoubleSolenoid.Value.kReverse); 
+  public void down() {
+    p_actuatorLeft.set(DoubleSolenoid.Value.kReverse);
+    p_actuatorRight.set(DoubleSolenoid.Value.kReverse); 
+  }
 }

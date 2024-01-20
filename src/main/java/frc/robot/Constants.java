@@ -24,12 +24,13 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final class PneumaticsConstants {
-    public static final int CLOSE_CHANNEL = 0;
-    public static final int OPEN_CHANNEL = 1;
-    public static final int Up_CHANNEL = 2;
-    public static final int Down_CHANNEL = 3;
+  public static final class PneumaticsConstants {
+    public static final int kActuatorLeftClose = 0;
+    public static final int kActuatorLeftOpen = 1;
+    public static final int kActuatorRightClose = 2;
+    public static final int kActuatorRightOpen = 3;
   }
+  
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
