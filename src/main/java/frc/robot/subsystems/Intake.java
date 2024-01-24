@@ -21,10 +21,12 @@ public class Intake extends SubsystemBase {
     m_intakeMotor.setIdleMode(kIntakeIdleMode);
   }
 
-  public void spin() {
+  public void intakeNote() {
     m_intakeMotor.set(kSpeed);
   }
-
+  public void outtakeNote(){
+    m_intakeMotor.set(-kSpeed);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
