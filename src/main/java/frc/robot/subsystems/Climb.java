@@ -28,6 +28,10 @@ public class Climb extends SubsystemBase {
   public void climbDown() {
     m_leftFrontMotor.set(-0.5);
   }
+
+  public void stopClimb(){
+    m_leftFrontMotor.set(0);
+  }
   
   @Override
   public void periodic() {
