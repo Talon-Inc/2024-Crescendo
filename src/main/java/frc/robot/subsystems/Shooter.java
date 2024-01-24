@@ -11,18 +11,18 @@ import com.revrobotics.CANSparkMax;
 import frc.robot.Constants.ShooterConstants;
 
 public class Shooter extends SubsystemBase {
-  private final CANSparkMax m_FernaggleFlabber1 = new CANSparkMax(ShooterConstants.kFernaggleFlabberCan1ID, ShooterConstants.kMotorType);
-  private final CANSparkMax m_FernaggleFlabber2 = new CANSparkMax(ShooterConstants.kFernaggleFlabberCan2ID, ShooterConstants.kMotorType);
+  private final CANSparkMax m_shootMotor1 = new CANSparkMax(ShooterConstants.kFernaggleFlabberCan1ID, ShooterConstants.kMotorType);
+  private final CANSparkMax m_shootMotor2 = new CANSparkMax(ShooterConstants.kFernaggleFlabberCan2ID, ShooterConstants.kMotorType);
   
   /** Creates a new ShooterArm. */
   public Shooter() {
     // initalize motor stuff
-    m_FernaggleFlabber2.follow(m_FernaggleFlabber1);
-    m_FernaggleFlabber2.setInverted(true);
+    m_shootMotor2.follow(m_shootMotor1);
+    m_shootMotor2.setInverted(true);
   }
 
   public void shoot() {
-    m_FernaggleFlabber1.set(0.5);
+    m_shootMotor1.set(0.5);
   }
 
   // probably garbage
@@ -35,8 +35,8 @@ public class Shooter extends SubsystemBase {
     SmartDashboard.putNumber("Motor2velocity", FernaggleFlabber2.);
     */
     double voltage = 1 * rpm;
-    m_FernaggleFlabber1.setVoltage(voltage);
-    m_FernaggleFlabber2.setVoltage(-voltage);
+    m_shootMotor1.setVoltage(voltage);
+    m_shootMotor2.setVoltage(-voltage);
     
   }
 

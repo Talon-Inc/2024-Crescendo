@@ -37,7 +37,9 @@ public final class Constants {
     public static final int kShooterI = 0;
     public static final int kShooterD = 0;
   }
-
+  public static final class IntakeConstants{
+    public static final int kIntakeMotorCanID = 15;
+  }
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
