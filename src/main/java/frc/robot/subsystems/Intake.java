@@ -7,10 +7,12 @@ package frc.robot.subsystems;
 import static frc.robot.Constants.IntakeConstants.*;
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
   private final CANSparkMax m_intakeMotor = new CANSparkMax(kIntakeCanId, kMotorType);
+  private final DigitalInput m_intakeSensor = new DigitalInput(0);
 
   /** Creates a new Intake. */
   public Intake() {
@@ -19,6 +21,10 @@ public class Intake extends SubsystemBase {
     m_intakeMotor.setSmartCurrentLimit(kCurrentLimit);
 
     m_intakeMotor.setIdleMode(kIntakeIdleMode);
+  }
+
+  public boolean isNoteLoaded() {
+    return m_intakeSensor.get();
   }
 
   public void intakeNote() {
