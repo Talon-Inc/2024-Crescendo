@@ -11,8 +11,8 @@ import com.revrobotics.CANSparkMax;
 import frc.robot.Constants.ShooterConstants;
 
 public class Shooter extends SubsystemBase {
-  private final CANSparkMax m_shootMotor1 = new CANSparkMax(ShooterConstants.kFernaggleFlabberCan1ID, ShooterConstants.kMotorType);
-  private final CANSparkMax m_shootMotor2 = new CANSparkMax(ShooterConstants.kFernaggleFlabberCan2ID, ShooterConstants.kMotorType);
+  private final CANSparkMax m_shootMotor1 = new CANSparkMax(ShooterConstants.kShootMotorCan1ID, ShooterConstants.kMotorType);
+  private final CANSparkMax m_shootMotor2 = new CANSparkMax(ShooterConstants.kShootMotorCan2ID, ShooterConstants.kMotorType);
   
   /** Creates a new ShooterArm. */
   public Shooter() {
