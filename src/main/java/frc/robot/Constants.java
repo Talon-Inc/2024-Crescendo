@@ -29,8 +29,7 @@ public final class Constants {
     public static final double kFreeSpeedRpm = 5676;
     public static final MotorType kMotorType = MotorType.kBrushless;
     //change can ids later
-    public static final int kShootMotorCan1ID = 13;
-    public static final int kShootMotorCan2ID = 14;
+    public static final int kShootMotorCanID = 13;
 
     //Change PID values later
     public static final int kShooterP = 0;
