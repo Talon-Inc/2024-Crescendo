@@ -26,7 +26,8 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final class IntakeConstants {
-    public static final int kIntakeCanId = 12;
+    public static final int kIntakeCanId1 = 12;
+    public static final int kIntakeCanId2 = 14;
     public static final MotorType kMotorType = MotorType.kBrushed;
     public static final int kCurrentLimit = 40; 
     public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;
