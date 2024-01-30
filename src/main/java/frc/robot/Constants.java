@@ -32,10 +32,25 @@ public final class Constants {
     public static final int kFernaggleFlabberCan1ID = 13;
     public static final int kFernaggleFlabberCan2ID = 14;
 
+    public static final IdleMode kShooterIdleMode = IdleMode.kCoast;
+    public static final int kShooterSmartCurrentLimit = 40;
+
     //Change PID values later
-    public static final int kShooterP = 0;
-    public static final int kShooterI = 0;
-    public static final int kShooterD = 0;
+    public static final double kShooterTopP = 0.0;
+    public static final double kShooterTopI = 0.0;
+    public static final double kShooterTopD = 0.0;
+    public static final double kShooterTopFF = 0.0;
+
+    public static final double kShooterBottomP = 0.0;
+    public static final double kShooterBottomI = 0.0;
+    public static final double kShooterBottomD = 0.0;
+    public static final double kShooterBottomFF = 0.0;
+
+    public static final double kShooterMinOutput = -1.0;
+    public static final double kShooterMaxOutput = 1.0;
+
+    public static final double kSetPoint = 5000;
+
   }
   public static final class IntakeConstants{
     public static final int kIntakeMotorCanID = 15;
