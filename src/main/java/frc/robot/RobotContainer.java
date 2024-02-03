@@ -101,13 +101,13 @@ public class RobotContainer {
     // new JoystickButton(m_driverController, Button.kCross.value)
     //     .whileTrue(alignAtAprilTag);  
 
-    // The B button on the controller
-    new JoystickButton(m_driverController, Button.kCross.value)
-        .whileTrue(gettingInRangeAT1);
+    // // The B button on the controller
+    // new JoystickButton(m_driverController, Button.kCross.value)
+    //     .whileTrue(gettingInRangeAT1);
     
-    // The X button on controller
-    new JoystickButton(m_driverController, Button.kCircle.value)
-        .whileTrue(gettingInRangeAT2);
+    // // The X button on controller
+    // new JoystickButton(m_driverController, Button.kCircle.value)
+    //     .whileTrue(gettingInRangeAT2);
   }
 
   /**
