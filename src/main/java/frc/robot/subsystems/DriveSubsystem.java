@@ -23,7 +23,6 @@ import edu.wpi.first.wpilibj.DriverStation;
 // import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 import frc.utils.SwerveUtils;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -124,7 +123,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public ChassisSpeeds getRobotRelativeSpeeds(){
-    return Constants.DriveConstants.kDriveKinematics.toChassisSpeeds(
+    return DriveConstants.kDriveKinematics.toChassisSpeeds(
       m_frontLeft.getState(), 
       m_frontRight.getState(),
       m_rearLeft.getState(),
@@ -133,9 +132,9 @@ public class DriveSubsystem extends SubsystemBase {
 }
 
 public void driveRobotRelative(ChassisSpeeds robotRelativeSpeeds){
-    var states = Constants.DriveConstants.kDriveKinematics.toSwerveModuleStates(robotRelativeSpeeds);
+    var states = DriveConstants.kDriveKinematics.toSwerveModuleStates(robotRelativeSpeeds);
 
-    SwerveDriveKinematics.desaturateWheelSpeeds(states, Constants.DriveConstants.kMaxSpeedMetersPerSecond);
+    SwerveDriveKinematics.desaturateWheelSpeeds(states, DriveConstants.kMaxSpeedMetersPerSecond);
 
     setModuleStates(states);
 }
