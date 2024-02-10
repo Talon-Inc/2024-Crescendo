@@ -49,7 +49,7 @@ public class RobotContainer {
   // private final AlignAtAprilTag alignAtAprilTag = new AlignAtAprilTag(m_robotDrive, m_Limelight, 1, 1);
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
   private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1, 0);
-  private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 0);
+  private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 0, 5);
   private final GettingInRangeAT ampAlingment = new GettingInRangeAT(m_robotDrive, m_Limelight, 0.5, 0, 5);
 
   // The driver's controller
@@ -92,23 +92,24 @@ public class RobotContainer {
         .whileTrue(new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive));
-     // The A button on controller (Resets the field relativity)
-     new JoystickButton(m_driverController, Button.kSquare.value)
-        .whileTrue(new RunCommand(
-            () -> m_robotDrive.zeroHeading(),
-            m_robotDrive));
-        
-    // The B button on the controller
-    new JoystickButton(m_driverController, Button.kCross.value)
-        .whileTrue(ampAlingment);  
 
+    // The A button on controller (Resets the field relativity)
+    new JoystickButton(m_driverController, Button.kSquare.value)
+      .whileTrue(new RunCommand(
+          () -> m_robotDrive.zeroHeading(),
+          m_robotDrive));
+      
     // // The B button on the controller
     // new JoystickButton(m_driverController, Button.kCross.value)
-    //     .whileTrue(gettingInRangeAT1);
+    //     .whileTrue(ampAlingment);  
+
+    // The B button on the controller
+    new JoystickButton(m_driverController, Button.kCross.value)
+        .whileTrue(aprilTagAiming);
     
-    // // The X button on controller
-    // new JoystickButton(m_driverController, Button.kCircle.value)
-    //     .whileTrue(gettingInRangeAT2);
+    // The X button on controller
+    new JoystickButton(m_driverController, Button.kCircle.value)
+        .whileTrue(gettingInRangeAT2);
   }
 
   /**

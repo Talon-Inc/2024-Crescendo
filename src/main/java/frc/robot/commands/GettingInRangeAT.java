@@ -30,6 +30,7 @@ public class GettingInRangeAT extends Command {
     this.limelight = limelight;
     this.desiredZ = desiredZ;
     this.desiredX = desiredX;
+    this.tagID = tagID;
 
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -78,7 +79,7 @@ public class GettingInRangeAT extends Command {
         speedY = 0;
       }
     
-    swerveDrive.drive(speedX, speedY, rot, false, false);
+    swerveDrive.drive(speedX, speedY, rot, true, false);
 
   }
 
