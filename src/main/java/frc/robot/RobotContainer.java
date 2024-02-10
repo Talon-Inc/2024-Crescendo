@@ -48,8 +48,9 @@ public class RobotContainer {
 
   // private final AlignAtAprilTag alignAtAprilTag = new AlignAtAprilTag(m_robotDrive, m_Limelight, 1, 1);
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
-  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1);
-  private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0);
+  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1, 0);
+  private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 0);
+  private final GettingInRangeAT ampAlingment = new GettingInRangeAT(m_robotDrive, m_Limelight, 0.5, 0, 5);
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -97,9 +98,9 @@ public class RobotContainer {
             () -> m_robotDrive.zeroHeading(),
             m_robotDrive));
         
-    
-    // new JoystickButton(m_driverController, Button.kCross.value)
-    //     .whileTrue(alignAtAprilTag);  
+    // The B button on the controller
+    new JoystickButton(m_driverController, Button.kCross.value)
+        .whileTrue(ampAlingment);  
 
     // // The B button on the controller
     // new JoystickButton(m_driverController, Button.kCross.value)

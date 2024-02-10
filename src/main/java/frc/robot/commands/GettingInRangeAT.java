@@ -18,12 +18,13 @@ public class GettingInRangeAT extends Command {
   double currentDistanceZ;
   double desiredZ;
   double desiredX;
+  int tagID;
 
   DriveSubsystem swerveDrive;
   Limelight limelight;
 
   /** Creates a new GettingInRangeAT. */
-  public GettingInRangeAT(DriveSubsystem swerveDrive, Limelight limelight, double desiredZ, double desiredX) {
+  public GettingInRangeAT(DriveSubsystem swerveDrive, Limelight limelight, double desiredZ, double desiredX, int tagID) {
 
     this.swerveDrive = swerveDrive;
     this.limelight = limelight;
@@ -44,6 +45,7 @@ public class GettingInRangeAT extends Command {
   public void execute() {
       double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
       double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+      double tid = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tid").getDouble(0);
 
       double[] botpose_targetspace = limelight.getBotPositionToTargetSpace();
       double currentDistanceZ = -botpose_targetspace[2];
@@ -55,6 +57,10 @@ public class GettingInRangeAT extends Command {
       double speedY = distanceErrorZ * Kp;
       double speedX = distanceErrorX * Kp;
       double rot = tx * Kp_rot;
+
+      if (tid != tagID) {
+        tv = 0;
+      }
 
       if (tv == 0) {
         speedY = 0;
