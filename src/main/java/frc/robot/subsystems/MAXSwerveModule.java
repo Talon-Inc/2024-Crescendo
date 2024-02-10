@@ -165,4 +165,12 @@ public class MAXSwerveModule {
   public double getEncoder() {
     return Math.toDegrees(m_turningEncoder.getPosition());
   }
+
+  public double getVelocity() {
+    return m_drivingEncoder.getVelocity();
+  }
+
+  public double getAngVel() {
+    return m_turningEncoder.getVelocity();
+  }
 }

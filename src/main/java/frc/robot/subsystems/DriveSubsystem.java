@@ -125,7 +125,15 @@ public class DriveSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("Mod2ABS", m_frontRight.getEncoder());
     SmartDashboard.putNumber("Mod3ABS", m_rearLeft.getEncoder());
     SmartDashboard.putNumber("Mod4ABS", m_rearRight.getEncoder());
-
+    SmartDashboard.putNumber("MOD1Velocity", m_frontLeft.getVelocity());
+    SmartDashboard.putNumber("MOD2Velocity", m_frontRight.getVelocity());
+    SmartDashboard.putNumber("MOD3Velocity", m_rearLeft.getVelocity());
+    SmartDashboard.putNumber("MOD4Velocity", m_rearRight.getVelocity());
+    // SmartDashboard.putNumber("Mod1ANG", m_frontLeft.getAngVel());
+    // SmartDashboard.putNumber("Mod2ANG", m_frontRight.getAngVel());
+    // SmartDashboard.putNumber("Mod3ANG", m_rearLeft.getAngVel());
+    // SmartDashboard.putNumber("Mod4ANG", m_rearRight.getAngVel());
+  
   }
 
   public ChassisSpeeds getRobotRelativeSpeeds() {
