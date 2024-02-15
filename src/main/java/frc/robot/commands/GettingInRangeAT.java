@@ -11,7 +11,7 @@ import frc.robot.subsystems.Limelight;
 
 public class GettingInRangeAT extends Command {
 
-  double Kp = 0.1;
+  double Kp = 0.1500;
   double Kp_rot = -.0076;
   double maxSpeed = .4;
 
@@ -55,8 +55,8 @@ public class GettingInRangeAT extends Command {
       double distanceErrorZ = desiredZ - currentDistanceZ;
       double distanceErrorX = desiredX - currentDistanceX;
 
-      double speedY = distanceErrorZ * Kp;
-      double speedX = distanceErrorX * Kp;
+      double speedX = -distanceErrorZ * Kp;
+      double speedY = distanceErrorX * Kp;
       double rot = tx * Kp_rot;
 
       if (tid != tagID) {
@@ -64,22 +64,29 @@ public class GettingInRangeAT extends Command {
       }
 
       if (tv == 0) {
-        speedY = 0;
         speedX = 0;
+        speedY = 0;
         rot = 0;
       }
-        //I don't want the robot to go a very fast speedY/X if it is very far away from robot
-      if (Math.abs(speedY) > maxSpeed && Math.abs(speedX) > maxSpeed) {
-        speedY = maxSpeed;
+      
+      // I don't want the robot to go a very fast speedY/X if it is very far away from robot
+      if (Math.abs(speedX) > maxSpeed) {
         speedX = maxSpeed;
       }
 
-      if(Math.abs(distanceErrorX) < .05 && Math.abs(distanceErrorZ) < .05) {
-        speedX = 0;
+      if (Math.abs(speedY) > maxSpeed) {
+        speedY = maxSpeed;
+      }
+
+      if (Math.abs(distanceErrorX) < 0.1) {
         speedY = 0;
       }
+
+      if (Math.abs(distanceErrorZ) < 0.1) {
+        speedX = 0;
+      }
     
-    swerveDrive.drive(speedX, speedY, rot, true, false);
+    swerveDrive.drive(speedX, speedY, rot, false, false);
 
   }
 
