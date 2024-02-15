@@ -20,8 +20,10 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.AprilTagAiming;
 import frc.robot.commands.GettingInRangeAT;
+import frc.robot.commands.Shoot;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.Shooter;
 // import frc.robot.commands.AlignAtAprilTag;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -39,11 +41,13 @@ public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   private final Limelight m_Limelight = new Limelight();
+  private final Shooter mShooter = new Shooter();
 
 //   private final AlignAtAprilTag alignAtAprilTag = new AlignAtAprilTag(m_robotDrive, m_Limelight, 1, 1);
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
   private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1);
   private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0);
+  private final Shoot shoot = new Shoot(mShooter);
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -94,7 +98,7 @@ public class RobotContainer {
 
     // The B button on the controller
     new JoystickButton(m_driverController, Button.kCross.value)
-        .whileTrue(gettingInRangeAT1);
+        .whileTrue(shoot);
     
     // The X button on controller
     new JoystickButton(m_driverController, Button.kCircle.value)
