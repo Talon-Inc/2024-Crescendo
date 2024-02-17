@@ -25,6 +25,10 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static final class LedConstants {
+    public static final int kLedChannel = 0;
+  }
+
   public static final class ClimbConstants {
     public static final int kClimbLeftCanId = 10;
     public static final int kClimbRightCanId = 11;
