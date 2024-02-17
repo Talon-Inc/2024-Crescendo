@@ -25,6 +25,12 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static final class ClimbConstants {
+    public static final int kClimbLeftCanId = 10;
+    public static final int kClimbRightCanId = 11;
+    public static final MotorType kMotorType = MotorType.kBrushed;
+  }
+  
   public static final class IntakeConstants {
     // Intake CAN IDs
     public static final int kIntakeCanId1 = 9;
