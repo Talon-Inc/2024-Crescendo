@@ -82,7 +82,7 @@ public class MAXSwerveModule {
     m_drivingPIDController.setP(ModuleConstants.kDrivingP[drivingCANId - 1]);
     m_drivingPIDController.setI(ModuleConstants.kDrivingI[drivingCANId - 1]);
     m_drivingPIDController.setD(ModuleConstants.kDrivingD[drivingCANId - 1]);
-    m_drivingPIDController.setFF(ModuleConstants.kDrivingFF);
+    m_drivingPIDController.setFF(ModuleConstants.kDrivingFF[drivingCANId - 1]);
     m_drivingPIDController.setOutputRange(ModuleConstants.kDrivingMinOutput,
         ModuleConstants.kDrivingMaxOutput);
 
