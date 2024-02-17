@@ -79,18 +79,18 @@ public class MAXSwerveModule {
 
     // Set the PID gains for the driving motor. Note these are example gains, and you
     // may need to tune them for your own robot!
-    m_drivingPIDController.setP(ModuleConstants.kDrivingP);
-    m_drivingPIDController.setI(ModuleConstants.kDrivingI);
-    m_drivingPIDController.setD(ModuleConstants.kDrivingD);
+    m_drivingPIDController.setP(ModuleConstants.kDrivingP[drivingCANId - 1]);
+    m_drivingPIDController.setI(ModuleConstants.kDrivingI[drivingCANId - 1]);
+    m_drivingPIDController.setD(ModuleConstants.kDrivingD[drivingCANId - 1]);
     m_drivingPIDController.setFF(ModuleConstants.kDrivingFF);
     m_drivingPIDController.setOutputRange(ModuleConstants.kDrivingMinOutput,
         ModuleConstants.kDrivingMaxOutput);
 
     // Set the PID gains for the turning motor. Note these are example gains, and you
     // may need to tune them for your own robot!
-    m_turningPIDController.setP(ModuleConstants.kTurningP);
-    m_turningPIDController.setI(ModuleConstants.kTurningI);
-    m_turningPIDController.setD(ModuleConstants.kTurningD);
+    m_turningPIDController.setP(ModuleConstants.kTurningP[drivingCANId - 1]);
+    m_turningPIDController.setI(ModuleConstants.kTurningI[drivingCANId - 1]);
+    m_turningPIDController.setD(ModuleConstants.kTurningD[drivingCANId - 1]);
     m_turningPIDController.setFF(ModuleConstants.kTurningFF);
     m_turningPIDController.setOutputRange(ModuleConstants.kTurningMinOutput,
         ModuleConstants.kTurningMaxOutput);
@@ -160,5 +160,17 @@ public class MAXSwerveModule {
   /** Zeroes all the SwerveModule encoders. */
   public void resetEncoders() {
     m_drivingEncoder.setPosition(0);
+  }
+
+  public double getEncoder() {
+    return Math.toDegrees(m_turningEncoder.getPosition());
+  }
+
+  public double getVelocity() {
+    return m_drivingEncoder.getVelocity();
+  }
+
+  public double getAngVel() {
+    return m_turningEncoder.getVelocity();
   }
 }

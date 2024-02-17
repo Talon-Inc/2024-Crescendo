@@ -33,6 +33,33 @@ public final class Constants {
     public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;
     public static final double kSpeed = 0.5;
   }
+  
+  public static final class ShooterConstants{
+    public static final MotorType kMotorType = MotorType.kBrushless;
+
+    // Shooter CAN IDs
+    public static final int m_ShootMotorTopCanID = 13;
+    public static final int m_ShootMotorBottomCanID = 14;
+
+    public static final IdleMode kShooterIdleMode = IdleMode.kCoast;
+    public static final int kShooterSmartCurrentLimit = 20;
+
+    // PID values for shooter
+    public static final double kShooterTopP = 0.00008;
+    public static final double kShooterTopI = 0.0;
+    public static final double kShooterTopD = 0.0;
+    public static final double kShooterTopFF = 0.000094;
+
+    public static final double kShooterBottomP = 0.00008;
+    public static final double kShooterBottomI = 0.0;
+    public static final double kShooterBottomD = 0.0;
+    public static final double kShooterBottomFF = 0.000094;
+
+    public static final double kShooterMinOutput = -1.0;
+    public static final double kShooterMaxOutput = 1.0;
+
+    public static final double kSetPoint = 5000;
+  }
 
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
@@ -45,9 +72,9 @@ public final class Constants {
     public static final double kRotationalSlewRate = 2.0; // percent per second (1 = 100%)
 
     // Chassis configuration
-    public static final double kTrackWidth = Units.inchesToMeters(26.5);
+    public static final double kTrackWidth = Units.inchesToMeters(23.5);
     // Distance between centers of right and left wheels on robot
-    public static final double kWheelBase = Units.inchesToMeters(26.5);
+    public static final double kWheelBase = Units.inchesToMeters(23.5);
     // Distance between front and back wheels on robot
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
         new Translation2d(kWheelBase / 2, kTrackWidth / 2),
@@ -71,7 +98,7 @@ public final class Constants {
     public static final int kRearLeftTurningCanId = 7;
     public static final int kFrontRightTurningCanId = 6;
     public static final int kRearRightTurningCanId = 8;
-
+    
     public static final boolean kGyroReversed = false;
   }
 
@@ -105,16 +132,18 @@ public final class Constants {
     public static final double kTurningEncoderPositionPIDMinInput = 0; // radians
     public static final double kTurningEncoderPositionPIDMaxInput = kTurningEncoderPositionFactor; // radians
 
-    public static final double kDrivingP = 0.04;
-    public static final double kDrivingI = 0;
-    public static final double kDrivingD = 0;
+    // { FrontLeft, FrontRight, RearLeft, RearRight }
+    public static final double[] kDrivingP = { 0.18, 0.10, 0.16, 0.16 };
+    public static final double[] kDrivingI = { 0.000, 0.000, 0.000, 0.000 };
+    public static final double[] kDrivingD = { 0.05, 0.06, 0.05, 0.05 };
     public static final double kDrivingFF = 1 / kDriveWheelFreeSpeedRps;
     public static final double kDrivingMinOutput = -1;
     public static final double kDrivingMaxOutput = 1;
 
-    public static final double kTurningP = 1;
-    public static final double kTurningI = 0;
-    public static final double kTurningD = 0;
+    // { FrontLeft, FrontRight, RearLeft, RearRight }
+    public static final double[] kTurningP = { 0.75, 0.75, 0.75, 0.75 };
+    public static final double[] kTurningI = { 0, 0, 0, 0 };
+    public static final double[] kTurningD = { 0.01, 0.01, 0.01, 0.01 };
     public static final double kTurningFF = 0;
     public static final double kTurningMinOutput = -1;
     public static final double kTurningMaxOutput = 1;
