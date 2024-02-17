@@ -19,6 +19,7 @@ public class Shooter extends SubsystemBase {
   private final RelativeEncoder m_encoderBottom = m_shootMotorBottom.getEncoder();
   private final SparkPIDController m_pidControllerTop = m_shootMotorTop.getPIDController();
   private final SparkPIDController m_pidControllerBottom = m_shootMotorBottom.getPIDController();
+
   /** Creates a new ShooterArm. */
   public Shooter() {
     m_shootMotorTop.restoreFactoryDefaults();
@@ -41,7 +42,7 @@ public class Shooter extends SubsystemBase {
     m_pidControllerTop.setD(ShooterConstants.kShooterTopD);
     m_pidControllerTop.setFF(ShooterConstants.kShooterTopFF);
     m_pidControllerTop.setOutputRange(ShooterConstants.kShooterMinOutput, ShooterConstants.kShooterMaxOutput);
-  
+
     m_pidControllerBottom.setP(ShooterConstants.kShooterBottomP);
     m_pidControllerBottom.setI(ShooterConstants.kShooterBottomI);
     m_pidControllerBottom.setD(ShooterConstants.kShooterBottomD);
@@ -55,21 +56,17 @@ public class Shooter extends SubsystemBase {
   public void shoot() {
     m_pidControllerTop.setReference(ShooterConstants.kSetPoint, CANSparkMax.ControlType.kVelocity);
     m_pidControllerBottom.setReference(ShooterConstants.kSetPoint, CANSparkMax.ControlType.kVelocity);
-  
-
   }
 
   public void stop() {
-    m_shootMotorBottom.set(0);
     m_shootMotorTop.set(0);
+    m_shootMotorBottom.set(0);
   }
-
 
   @Override
   public void periodic() {
+    // This method will be called once per scheduler run
     SmartDashboard.putNumber("Shooter_Top", m_encoderTop.getVelocity());
     SmartDashboard.putNumber("Shooter_Bottom", m_encoderBottom.getVelocity());
-    
-    // This method will be called once per scheduler run
   }
 }

@@ -26,16 +26,16 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final class ShooterConstants{
-    public static final double kFreeSpeedRpm = 5676;
     public static final MotorType kMotorType = MotorType.kBrushless;
-    //change can ids later
+
+    // Shooter CAN IDs
     public static final int m_ShootMotorTopCanID = 13;
     public static final int m_ShootMotorBottomCanID = 14;
 
     public static final IdleMode kShooterIdleMode = IdleMode.kCoast;
     public static final int kShooterSmartCurrentLimit = 20;
 
-    //Change PID values later
+    // PID values for shooter
     public static final double kShooterTopP = 0.00008;
     public static final double kShooterTopI = 0.0;
     public static final double kShooterTopD = 0.0;
@@ -50,11 +50,12 @@ public final class Constants {
     public static final double kShooterMaxOutput = 1.0;
 
     public static final double kSetPoint = 5000;
-
   }
+
   public static final class IntakeConstants{
     public static final int kIntakeMotorCanID = 15;
   }
+
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
@@ -77,10 +78,10 @@ public final class Constants {
         new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
     // Angular offsets of the modules relative to the chassis in radians
-    public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2; //- Math.toRadians(3.85);
-    public static final double kFrontRightChassisAngularOffset = 0; //- Math.toRadians(2.0);
+    public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2;
+    public static final double kFrontRightChassisAngularOffset = 0;
     public static final double kBackLeftChassisAngularOffset = Math.PI;
-    public static final double kBackRightChassisAngularOffset = Math.PI / 2; //- Math.toRadians(2.34);
+    public static final double kBackRightChassisAngularOffset = Math.PI / 2;
 
     // SPARK MAX CAN IDs
     public static final int kFrontLeftDrivingCanId = 1;
