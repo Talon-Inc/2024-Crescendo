@@ -26,12 +26,16 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final class IntakeConstants {
-    public static final int kIntakeCanId1 = 12;
-    public static final int kIntakeCanId2 = 14;
+    // Intake CAN IDs
+    public static final int kIntakeCanId1 = 9;
+    public static final int kIntakeCanId2 = 10;
+
     public static final MotorType kMotorType = MotorType.kBrushed;
-    public static final int kCurrentLimit = 40; 
+    public static final int kCurrentLimit = 20; 
     public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;
-    public static final double kSpeed = 0.5;
+
+    // Intake speed
+    public static final double kSpeed = 0.25;
   }
   
   public static final class ShooterConstants{
