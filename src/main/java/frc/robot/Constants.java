@@ -29,6 +29,8 @@ public final class Constants {
     public static final int kClimbLeftCanId = 10;
     public static final int kClimbRightCanId = 11;
     public static final MotorType kMotorType = MotorType.kBrushed;
+    public static final IdleMode kIdleMode = IdleMode.kBrake;
+    public static final int kCurrentLimit = 40;
   }
   
   public static final class IntakeConstants {
@@ -37,8 +39,8 @@ public final class Constants {
     public static final int kIntakeCanId2 = 10;
 
     public static final MotorType kMotorType = MotorType.kBrushed;
-    public static final int kCurrentLimit = 20; 
     public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;
+    public static final int kCurrentLimit = 20;
 
     // Intake speed
     public static final double kSpeed = 0.25;

@@ -14,7 +14,7 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.PS4Controller.Button;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.AutoConstants;
@@ -91,28 +91,28 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(m_driverController, Button.kR1.value)
+    new JoystickButton(m_driverController, Button.kRightBumper.value)
         .whileTrue(new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive));
      // The A button on controller (Resets the field relativity)
-     new JoystickButton(m_driverController, Button.kSquare.value)
+     new JoystickButton(m_driverController, Button.kA.value)
         .whileTrue(new RunCommand(
             () -> m_robotDrive.zeroHeading(),
             m_robotDrive));
         
     
-    // new JoystickButton(m_driverController, Button.kCross.value)
+    // new JoystickButton(m_driverController, Button.kB.value)
     //     .whileTrue(alignAtAprilTag);  
 
     // The B button on the controller
-    new JoystickButton(m_driverController, Button.kCross.value)
+    new JoystickButton(m_driverController, Button.kB.value)
         .whileTrue(new RunCommand(
           () -> m_robotDrive.drive(.25, 0, 0, true, true),
            m_robotDrive));
     
     //X button
-    new JoystickButton(m_driverController, Button.kCircle.value)
+    new JoystickButton(m_driverController, Button.kX.value)
         .whileTrue(new RunCommand(
           () -> m_robotDrive.drive(-.25, 0, 0, true, true),
            m_robotDrive));       
