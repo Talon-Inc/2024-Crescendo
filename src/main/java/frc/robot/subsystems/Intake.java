@@ -4,11 +4,42 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.IntakeConstants;
 
 public class Intake extends SubsystemBase {
+  private final CANSparkMax m_intakeMotor1 = new CANSparkMax(IntakeConstants.kIntakeCanId1, IntakeConstants.kMotorType);
+  private final CANSparkMax m_intakeMotor2 = new CANSparkMax(IntakeConstants.kIntakeCanId2, IntakeConstants.kMotorType);
+  private final DigitalInput m_intakeSensor = new DigitalInput(0);
+
   /** Creates a new Intake. */
-  public Intake() {}
+  public Intake() {
+    m_intakeMotor1.restoreFactoryDefaults();
+    m_intakeMotor2.restoreFactoryDefaults();
+
+    m_intakeMotor1.setSmartCurrentLimit(IntakeConstants.kCurrentLimit);
+    m_intakeMotor2.setSmartCurrentLimit(IntakeConstants.kCurrentLimit);
+
+    m_intakeMotor1.setIdleMode(IntakeConstants.kIntakeIdleMode);
+    m_intakeMotor2.setIdleMode(IntakeConstants.kIntakeIdleMode);
+  }
+
+  public boolean isNoteLoaded() {
+    return m_intakeSensor.get();
+  }
+
+  public void intakeNote() {
+    m_intakeMotor1.set(IntakeConstants.kSpeed);
+    m_intakeMotor2.set(IntakeConstants.kSpeed);
+  }
+
+  public void outtakeNote(){
+    m_intakeMotor1.set(-IntakeConstants.kSpeed);
+    m_intakeMotor2.set(-IntakeConstants.kSpeed);
+  }
 
   @Override
   public void periodic() {
