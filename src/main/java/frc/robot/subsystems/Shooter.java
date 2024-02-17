@@ -13,8 +13,8 @@ import com.revrobotics.SparkPIDController;
 import frc.robot.Constants.ShooterConstants;
 
 public class Shooter extends SubsystemBase {
-  private final CANSparkMax m_shootMotorTop = new CANSparkMax(ShooterConstants.kFernaggleFlabberCan1ID, ShooterConstants.kMotorType);
-  private final CANSparkMax m_shootMotorBottom = new CANSparkMax(ShooterConstants.kFernaggleFlabberCan2ID, ShooterConstants.kMotorType);
+  private final CANSparkMax m_shootMotorTop = new CANSparkMax(ShooterConstants.m_ShootMotorTopCanID, ShooterConstants.kMotorType);
+  private final CANSparkMax m_shootMotorBottom = new CANSparkMax(ShooterConstants.m_ShootMotorBottomCanID, ShooterConstants.kMotorType);
   private final RelativeEncoder m_encoderTop = m_shootMotorTop.getEncoder();
   private final RelativeEncoder m_encoderBottom = m_shootMotorBottom.getEncoder();
   private final SparkPIDController m_pidControllerTop = m_shootMotorTop.getPIDController();
@@ -55,12 +55,20 @@ public class Shooter extends SubsystemBase {
   public void shoot() {
     m_pidControllerTop.setReference(ShooterConstants.kSetPoint, CANSparkMax.ControlType.kVelocity);
     m_pidControllerBottom.setReference(ShooterConstants.kSetPoint, CANSparkMax.ControlType.kVelocity);
+  
 
+  }
+
+  public void stop() {
+    m_shootMotorBottom.set(0);
+    m_shootMotorTop.set(0);
   }
 
 
   @Override
   public void periodic() {
+    SmartDashboard.putNumber("Shooter_Top", m_encoderTop.getVelocity());
+    SmartDashboard.putNumber("Shooter_Bottom", m_encoderBottom.getVelocity());
     
     // This method will be called once per scheduler run
   }
