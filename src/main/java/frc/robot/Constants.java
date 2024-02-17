@@ -25,6 +25,15 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static final class IntakeConstants {
+    public static final int kIntakeCanId1 = 12;
+    public static final int kIntakeCanId2 = 14;
+    public static final MotorType kMotorType = MotorType.kBrushed;
+    public static final int kCurrentLimit = 40; 
+    public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;
+    public static final double kSpeed = 0.5;
+  }
+  
   public static final class ShooterConstants{
     public static final MotorType kMotorType = MotorType.kBrushless;
 
@@ -50,10 +59,6 @@ public final class Constants {
     public static final double kShooterMaxOutput = 1.0;
 
     public static final double kSetPoint = 5000;
-  }
-
-  public static final class IntakeConstants{
-    public static final int kIntakeMotorCanID = 15;
   }
 
   public static final class DriveConstants {
