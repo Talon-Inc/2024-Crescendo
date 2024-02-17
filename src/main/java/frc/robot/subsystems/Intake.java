@@ -4,11 +4,18 @@
 
 package frc.robot.subsystems;
 
+import static frc.robot.Constants.IntakeConstants.*;
+import static frc.robot.Constants.ShooterConstants.*;
+import com.revrobotics.CANSparkMax;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
+  CANSparkMax m_intakeMotor = new CANSparkMax(kIntakeMotorCanID,  kMotorType);
   /** Creates a new Intake. */
-  public Intake() {}
+  public Intake() {
+
+  }
 
   @Override
   public void periodic() {

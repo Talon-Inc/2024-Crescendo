@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -24,6 +25,36 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+  public static final class ShooterConstants{
+    public static final double kFreeSpeedRpm = 5676;
+    public static final MotorType kMotorType = MotorType.kBrushless;
+    //change can ids later
+    public static final int m_ShootMotorTopCanID = 13;
+    public static final int m_ShootMotorBottomCanID = 14;
+
+    public static final IdleMode kShooterIdleMode = IdleMode.kCoast;
+    public static final int kShooterSmartCurrentLimit = 20;
+
+    //Change PID values later
+    public static final double kShooterTopP = 0.00008;
+    public static final double kShooterTopI = 0.0;
+    public static final double kShooterTopD = 0.0;
+    public static final double kShooterTopFF = 0.000094;
+
+    public static final double kShooterBottomP = 0.00008;
+    public static final double kShooterBottomI = 0.0;
+    public static final double kShooterBottomD = 0.0;
+    public static final double kShooterBottomFF = 0.000094;
+
+    public static final double kShooterMinOutput = -1.0;
+    public static final double kShooterMaxOutput = 1.0;
+
+    public static final double kSetPoint = 5000;
+
+  }
+  public static final class IntakeConstants{
+    public static final int kIntakeMotorCanID = 15;
+  }
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
@@ -61,7 +92,7 @@ public final class Constants {
     public static final int kRearLeftTurningCanId = 7;
     public static final int kFrontRightTurningCanId = 6;
     public static final int kRearRightTurningCanId = 8;
-
+    
     public static final boolean kGyroReversed = false;
   }
 
