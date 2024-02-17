@@ -73,7 +73,7 @@ public class RobotContainer {
                 -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
                 -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
                 -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
-                true, true),
+                false, true),
             m_robotDrive));   
   }
 
@@ -101,10 +101,17 @@ public class RobotContainer {
     // new JoystickButton(m_driverController, Button.kCross.value)
     //     .whileTrue(alignAtAprilTag);  
 
-    // // The B button on the controller
-    // new JoystickButton(m_driverController, Button.kCross.value)
-    //     .whileTrue(gettingInRangeAT1);
+    // The B button on the controller
+    new JoystickButton(m_driverController, Button.kCross.value)
+        .whileTrue(new RunCommand(
+          () -> m_robotDrive.drive(.25, 0, 0, false, true),
+           m_robotDrive));
     
+    //X button
+    new JoystickButton(m_driverController, Button.kCircle.value)
+        .whileTrue(new RunCommand(
+          () -> m_robotDrive.drive(.5, 0, 0, false, true),
+           m_robotDrive));       
     // // The X button on controller
     // new JoystickButton(m_driverController, Button.kCircle.value)
     //     .whileTrue(gettingInRangeAT2);

@@ -119,12 +119,12 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearRight.getPosition()
         });
 
-    SmartDashboard.putNumber("yaw", m_gyro.getYaw()); // Gets updated Yaw of robot
+    // SmartDashboard.putNumber("yaw", m_gyro.getYaw()); // Gets updated Yaw of robot
     SmartDashboard.putNumber("yaw rate", m_gyro.getRate()); // Gets the updated rate of change of yaw
-    SmartDashboard.putNumber("Mod1ABS", m_frontLeft.getEncoder());
-    SmartDashboard.putNumber("Mod2ABS", m_frontRight.getEncoder());
-    SmartDashboard.putNumber("Mod3ABS", m_rearLeft.getEncoder());
-    SmartDashboard.putNumber("Mod4ABS", m_rearRight.getEncoder());
+    // SmartDashboard.putNumber("Mod1ABS", m_frontLeft.getEncoder());
+    // SmartDashboard.putNumber("Mod2ABS", m_frontRight.getEncoder());
+    // SmartDashboard.putNumber("Mod3ABS", m_rearLeft.getEncoder());
+    // SmartDashboard.putNumber("Mod4ABS", m_rearRight.getEncoder());
     SmartDashboard.putNumber("MOD1Velocity", m_frontLeft.getVelocity());
     SmartDashboard.putNumber("MOD2Velocity", m_frontRight.getVelocity());
     SmartDashboard.putNumber("MOD3Velocity", m_rearLeft.getVelocity());
