@@ -51,8 +51,8 @@ public class RobotContainer {
 
   // private final AlignAtAprilTag alignAtAprilTag = new AlignAtAprilTag(m_robotDrive, m_Limelight, 1, 1);
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
-  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1);
-  private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0);
+  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1, 5);
+  private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 5);
   private final Shoot shoot = new Shoot(mShooter);
 
   // The driver's controller
