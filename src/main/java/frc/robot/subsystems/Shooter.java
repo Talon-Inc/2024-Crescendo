@@ -37,16 +37,16 @@ public class Shooter extends SubsystemBase {
     // initalize motor stuff
     m_shootMotorBottom.setInverted(true);
 
-    m_pidControllerTop.setP(ShooterConstants.kShooterTopP);
-    m_pidControllerTop.setI(ShooterConstants.kShooterTopI);
-    m_pidControllerTop.setD(ShooterConstants.kShooterTopD);
-    m_pidControllerTop.setFF(ShooterConstants.kShooterTopFF);
+    m_pidControllerTop.setP(ShooterConstants.kShooterP[0]);
+    m_pidControllerTop.setI(ShooterConstants.kShooterI[0]);
+    m_pidControllerTop.setD(ShooterConstants.kShooterD[0]);
+    m_pidControllerTop.setFF(ShooterConstants.kShooterFF[0]);
     m_pidControllerTop.setOutputRange(ShooterConstants.kShooterMinOutput, ShooterConstants.kShooterMaxOutput);
 
-    m_pidControllerBottom.setP(ShooterConstants.kShooterBottomP);
-    m_pidControllerBottom.setI(ShooterConstants.kShooterBottomI);
-    m_pidControllerBottom.setD(ShooterConstants.kShooterBottomD);
-    m_pidControllerBottom.setFF(ShooterConstants.kShooterBottomFF);
+    m_pidControllerBottom.setP(ShooterConstants.kShooterP[1]);
+    m_pidControllerBottom.setI(ShooterConstants.kShooterI[1]);
+    m_pidControllerBottom.setD(ShooterConstants.kShooterD[1]);
+    m_pidControllerBottom.setFF(ShooterConstants.kShooterFF[1]);
     m_pidControllerBottom.setOutputRange(ShooterConstants.kShooterMinOutput, ShooterConstants.kShooterMaxOutput);
 
     m_shootMotorTop.burnFlash();

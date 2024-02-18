@@ -36,6 +36,10 @@ public class Intake extends SubsystemBase {
     m_intakeMotor2.set(IntakeConstants.kSpeed);
   }
 
+  public void moveIntakeChannel() {
+    m_intakeMotor2.set(IntakeConstants.kSpeed);
+  }
+
   public void outtakeNote(){
     m_intakeMotor1.set(-IntakeConstants.kSpeed);
     m_intakeMotor2.set(-IntakeConstants.kSpeed);
