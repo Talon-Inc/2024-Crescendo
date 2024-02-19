@@ -45,6 +45,11 @@ public class Intake extends SubsystemBase {
     m_intakeMotor2.set(-IntakeConstants.kSpeed);
   }
 
+  public void stop() {
+    m_intakeMotor1.set(0);
+    m_intakemotor2.set(0);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

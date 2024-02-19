@@ -62,7 +62,6 @@ public class RobotContainer {
   private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 5);
   private final Shoot shoot = new Shoot(m_Shooter);
   private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
-  private final MoveIntakeChannel moveIntakeChannel = new MoveIntakeChannel(m_intake);
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -127,7 +126,7 @@ public class RobotContainer {
     
     //Right Bumper Button
     new JoystickButton(m_driverController, Button.kRightBumper.value)
-        .onTrue(Commands.parallel(shoot, moveIntakeChannel));
+        .whileTrue(shoot);
 
     // // The X button on controller
     // new JoystickButton(m_driverController, Button.kCircle.value)

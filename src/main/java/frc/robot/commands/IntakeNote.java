@@ -33,17 +33,13 @@ public class IntakeNote extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    intake.stop();
     led.setGreen();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if(intake.isNoteLoaded()) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return intake.isNoteLoaded();
   }
 }

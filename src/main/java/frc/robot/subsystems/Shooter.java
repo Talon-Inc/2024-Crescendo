@@ -63,6 +63,15 @@ public class Shooter extends SubsystemBase {
     m_shootMotorBottom.set(0);
   }
 
+  public Boolean isShooterAtSpeed() {
+    if(m_encoderTop.getVelocity() > 4900 && m_encoderTop.getVelocity() < 5000) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
