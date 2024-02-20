@@ -22,12 +22,17 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.AprilTagAiming;
 import frc.robot.commands.GettingInRangeAT;
+import frc.robot.commands.IntakeNote;
+import frc.robot.commands.MoveIntakeChannel;
 import frc.robot.commands.Shoot;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.LED;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Shooter;
 // import frc.robot.commands.AlignAtAprilTag;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -47,13 +52,16 @@ public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   private final Limelight m_Limelight = new Limelight();
-  private final Shooter mShooter = new Shooter();
+  private final Shooter m_Shooter = new Shooter();
+  private final Intake m_intake = new Intake();
+  private final LED m_led = new LED();
 
   // private final AlignAtAprilTag alignAtAprilTag = new AlignAtAprilTag(m_robotDrive, m_Limelight, 1, 1);
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
   private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1, 5);
   private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 5);
-  private final Shoot shoot = new Shoot(mShooter);
+  private final Shoot shoot = new Shoot(m_Shooter);
+  private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -115,6 +123,11 @@ public class RobotContainer {
         .whileTrue(new RunCommand(
             () -> m_robotDrive.drive(-.25, 0, 0, true, true),
             m_robotDrive));
+    
+    //Right Bumper Button
+    new JoystickButton(m_driverController, Button.kRightBumper.value)
+        .whileTrue(shoot);
+
     // // The X button on controller
     // new JoystickButton(m_driverController, Button.kCircle.value)
     // .whileTrue(gettingInRangeAT2);
