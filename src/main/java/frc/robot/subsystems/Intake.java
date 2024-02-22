@@ -47,7 +47,7 @@ public class Intake extends SubsystemBase {
 
   public void stop() {
     m_intakeMotor1.set(0);
-    m_intakemotor2.set(0);
+    m_intakeMotor2.set(0);
   }
 
   @Override
