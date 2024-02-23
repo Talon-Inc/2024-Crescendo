@@ -1,0 +1,67 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.9554131415955136,
+      "y": 4.046177437084219
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bottom Turn"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AprilTagAiming"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bottom Start to Bottom note"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "intakeNote"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Bottom Note to shoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AprilTagAiming"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
