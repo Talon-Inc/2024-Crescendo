@@ -132,7 +132,6 @@ public class DriveSubsystem extends SubsystemBase {
     // SmartDashboard.putNumber("Mod2ANG", m_frontRight.getAngVel());
     // SmartDashboard.putNumber("Mod3ANG", m_rearLeft.getAngVel());
     // SmartDashboard.putNumber("Mod4ANG", m_rearRight.getAngVel());
-  
   }
 
   public ChassisSpeeds getRobotRelativeSpeeds() {

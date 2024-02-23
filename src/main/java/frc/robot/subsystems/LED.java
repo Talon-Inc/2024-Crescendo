@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.LedConstants;
 
 public class LED extends SubsystemBase {
-  private final PWMSparkMax led = new PWMSparkMax(LedConstants.kLedChannel); 
+  private final PWMSparkMax led = new PWMSparkMax(LedConstants.kLedChannel);
   private double color = 0;
 
   /** Creates a new LED. */
