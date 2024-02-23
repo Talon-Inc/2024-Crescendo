@@ -64,12 +64,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public Boolean isShooterAtSpeed() {
-    if(m_encoderTop.getVelocity() > 4900 && m_encoderTop.getVelocity() < 5000) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return m_encoderTop.getVelocity() > 4900;
   }
 
   @Override
