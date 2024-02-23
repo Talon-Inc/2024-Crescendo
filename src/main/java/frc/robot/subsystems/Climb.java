@@ -4,16 +4,15 @@
 
 package frc.robot.subsystems;
 
-import static frc.robot.Constants.ClimbConstants.*;
-
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.ClimbConstants;
 
 public class Climb extends SubsystemBase {
-  private final CANSparkMax m_leftFrontMotor = new CANSparkMax(kClimbLeftCanId, kMotorType);
-  private final CANSparkMax m_rightFrontMotor = new CANSparkMax(kClimbRightCanId, kMotorType);
-  
+  private final CANSparkMax m_leftFrontMotor = new CANSparkMax(ClimbConstants.kClimbLeftCanId, ClimbConstants.kMotorType);
+  private final CANSparkMax m_rightFrontMotor = new CANSparkMax(ClimbConstants.kClimbRightCanId, ClimbConstants.kMotorType);
+
   /** Creates a new Climb. */
   public Climb() {
     // add initialization for motors
@@ -29,10 +28,10 @@ public class Climb extends SubsystemBase {
     m_leftFrontMotor.set(-0.5);
   }
 
-  public void stopClimb(){
+  public void stopClimb() {
     m_leftFrontMotor.set(0);
   }
-  
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
