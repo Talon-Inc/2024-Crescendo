@@ -30,8 +30,8 @@ public final class Constants {
   }
 
   public static final class ClimbConstants {
-    public static final int kClimbLeftCanId = 10;
-    public static final int kClimbRightCanId = 11;
+    public static final int kClimbLeftCanId = 15;
+    public static final int kClimbRightCanId = 16;
     public static final MotorType kMotorType = MotorType.kBrushed;
     public static final IdleMode kIdleMode = IdleMode.kBrake;
     public static final int kCurrentLimit = 40;
@@ -39,8 +39,8 @@ public final class Constants {
   
   public static final class IntakeConstants {
     // Intake CAN IDs
-    public static final int kIntakeCanId1 = 9;
-    public static final int kIntakeCanId2 = 10;
+    public static final int kIntakeCanId = 11;
+    public static final int kMiddleIntakeCanId = 12;
 
     public static final MotorType kMotorType = MotorType.kBrushed;
     public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;
