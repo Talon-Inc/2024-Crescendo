@@ -32,6 +32,8 @@ public final class Constants {
   public static final class ClimbConstants {
     public static final int kClimbLeftCanId = 15;
     public static final int kClimbRightCanId = 16;
+    public static final int kLimitSwitchClimbTopDIO = 17;
+    public static final int kLimitSwitchClimbBottomDIO = 18;
     public static final MotorType kMotorType = MotorType.kBrushed;
     public static final IdleMode kIdleMode = IdleMode.kBrake;
     public static final int kCurrentLimit = 40;

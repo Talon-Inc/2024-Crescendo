@@ -7,11 +7,14 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.Constants.ClimbConstants;
 
 public class Climb extends SubsystemBase {
   private final CANSparkMax m_leftFrontMotor = new CANSparkMax(ClimbConstants.kClimbLeftCanId, ClimbConstants.kMotorType);
   private final CANSparkMax m_rightFrontMotor = new CANSparkMax(ClimbConstants.kClimbRightCanId, ClimbConstants.kMotorType);
+  private final DigitalInput limitSwitchClimbTop = new DigitalInput(ClimbConstants.kLimitSwitchClimbTopDIO);
+  private final DigitalInput limitSwitchClimbBottom = new DigitalInput(ClimbConstants.kLimitSwitchClimbBottomDIO);
 
   /** Creates a new Climb. */
   public Climb() {
@@ -30,6 +33,14 @@ public class Climb extends SubsystemBase {
 
   public void stopClimb() {
     m_leftFrontMotor.set(0);
+  }
+
+  public boolean getLimitSwitchTop() {
+    return limitSwitchClimbTop.get();
+  }
+
+  public boolean getLimitSwitchBottom() {
+    return limitSwitchClimbBottom.get();
   }
 
   @Override
