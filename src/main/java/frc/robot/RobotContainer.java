@@ -52,15 +52,15 @@ public class RobotContainer {
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   private final Limelight m_Limelight = new Limelight();
   // private final Shooter m_Shooter = new Shooter();
-  // private final Intake m_intake = new Intake();
-  // private final LED m_led = new LED();
+  private final Intake m_intake = new Intake();
+  private final LED m_led = new LED();
 
   // private final AlignAtAprilTag alignAtAprilTag = new AlignAtAprilTag(m_robotDrive, m_Limelight, 1, 1);
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
   private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1, 5);
   private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 5);
   // private final Shoot shoot = new Shoot(m_Shooter, m_intake);
-  // private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
+  private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -86,6 +86,9 @@ public class RobotContainer {
                 -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
                 true, true),
             m_robotDrive));
+            
+    // Constantly run intake, even during autonomous
+    m_intake.setDefaultCommand(intakeNote);
   }
 
   /**

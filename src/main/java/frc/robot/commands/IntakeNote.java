@@ -27,19 +27,24 @@ public class IntakeNote extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intake.intakeNote();
+    if (intake.isNoteLoaded()) {
+      intake.stop();
+      led.setGreen();
+    } else {
+      intake.intakeNote();
+      led.setBlack();
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     intake.stop();
-    led.setGreen();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return intake.isNoteLoaded();
+    return false;
   }
 }
