@@ -35,7 +35,7 @@ public final class Constants {
     public static final int kLimitSwitchClimbBottomDIO = 2;
     public static final MotorType kMotorType = MotorType.kBrushed;
     public static final IdleMode kIdleMode = IdleMode.kBrake;
-    public static final int kCurrentLimit = 20;
+    public static final int kCurrentLimit = 40;
   }
   
   public static final class IntakeConstants {
