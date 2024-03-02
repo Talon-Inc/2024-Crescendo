@@ -11,28 +11,32 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.Constants.ClimbConstants;
 
 public class Climb extends SubsystemBase {
-  private final CANSparkMax m_leftFrontMotor = new CANSparkMax(ClimbConstants.kClimbLeftCanId, ClimbConstants.kMotorType);
-  private final CANSparkMax m_rightFrontMotor = new CANSparkMax(ClimbConstants.kClimbRightCanId, ClimbConstants.kMotorType);
+  private final CANSparkMax m_climbMotor = new CANSparkMax(ClimbConstants.kClimbLeftCanId, ClimbConstants.kMotorType);
   private final DigitalInput limitSwitchClimbTop = new DigitalInput(ClimbConstants.kLimitSwitchClimbTopDIO);
   private final DigitalInput limitSwitchClimbBottom = new DigitalInput(ClimbConstants.kLimitSwitchClimbBottomDIO);
 
   /** Creates a new Climb. */
   public Climb() {
     // add initialization for motors
-    m_rightFrontMotor.follow(m_leftFrontMotor);
-    m_rightFrontMotor.setInverted(true);
+    m_climbMotor.restoreFactoryDefaults();
+
+    m_climbMotor.setSmartCurrentLimit(ClimbConstants.kCurrentLimit);
+
+    m_climbMotor.setIdleMode(ClimbConstants.kIdleMode);
+
+    m_climbMotor.burnFlash();
   }
 
   public void climbUp() {
-    m_leftFrontMotor.set(0.5);
+    m_climbMotor.set(0.5);
   }
 
   public void climbDown() {
-    m_leftFrontMotor.set(-0.5);
+    m_climbMotor.set(-0.5);
   }
 
   public void stopClimb() {
-    m_leftFrontMotor.set(0);
+    m_climbMotor.set(0);
   }
 
   public boolean getLimitSwitchTop() {

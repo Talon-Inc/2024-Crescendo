@@ -21,9 +21,12 @@ import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.AprilTagAiming;
+import frc.robot.commands.ClimbDownCommand;
+import frc.robot.commands.ClimbUpCommand;
 import frc.robot.commands.GettingInRangeAT;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.Shoot;
+import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LED;
@@ -35,6 +38,8 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+
 import java.util.List;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -51,6 +56,8 @@ public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   private final Limelight m_Limelight = new Limelight();
+  private final Climb m_Climb = new Climb();
+  private final Shooter m_Shooter = new Shooter();
   // private final Shooter m_Shooter = new Shooter();
   private final Intake m_intake = new Intake();
   private final LED m_led = new LED();
@@ -59,6 +66,10 @@ public class RobotContainer {
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
   private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1, 5);
   private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 5);
+  //:3
+  private final ClimbDownCommand ClimbDown = new ClimbDownCommand(m_Climb);
+  private final ClimbUpCommand ClimbUp = new ClimbUpCommand(m_Climb);
+  private final Shoot shoot = new Shoot(m_Shooter, m_intake);
   // private final Shoot shoot = new Shoot(m_Shooter, m_intake);
   private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
 
@@ -105,6 +116,7 @@ public class RobotContainer {
         .whileTrue(new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive));
+    
     // The A button on controller (Resets the field relativity)
     new JoystickButton(m_driverController, Button.kA.value)
         .whileTrue(new RunCommand(
@@ -112,19 +124,24 @@ public class RobotContainer {
             m_robotDrive));
 
     // new JoystickButton(m_driverController, Button.kB.value)
-    //    .whileTrue(alignAtAprilTag);
+     //   .whileTrue(alignAtAprilTag);
 
     // The B button on the controller
     new JoystickButton(m_driverController, Button.kB.value)
-        .whileTrue(new RunCommand(
-            () -> m_robotDrive.drive(.25, 0, 0, true, true),
-            m_robotDrive));
+        .whileTrue(gettingInRangeAT1);
 
     // X button
     new JoystickButton(m_driverController, Button.kX.value)
-        .whileTrue(new RunCommand(
-            () -> m_robotDrive.drive(-.25, 0, 0, true, true),
-            m_robotDrive));
+        .whileTrue(ClimbDown);
+
+    // Left bumper
+    new JoystickButton(m_driverController, Button.kLeftBumper.value)
+        .whileTrue(shoot);
+
+    // Y button
+    new JoystickButton(m_driverController, Button.kY.value)
+        .whileTrue(ClimbUp);
+
     
     //Right Bumper Button
     // new JoystickButton(m_driverController, Button.kRightBumper.value)
