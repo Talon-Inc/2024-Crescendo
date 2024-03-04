@@ -28,11 +28,11 @@ public class Climb extends SubsystemBase {
   }
 
   public void climbUp() {
-    m_climbMotor.set(0.5);
+    m_climbMotor.set(-0.8);
   }
 
   public void climbDown() {
-    m_climbMotor.set(-0.5);
+    m_climbMotor.set(0.8);
   }
 
   public void stopClimb() {
@@ -44,7 +44,7 @@ public class Climb extends SubsystemBase {
   }
 
   public boolean getLimitSwitchBottom() {
-    return limitSwitchClimbBottom.get();
+    return !limitSwitchClimbBottom.get();
   }
 
   @Override
