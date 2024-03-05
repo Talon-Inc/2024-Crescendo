@@ -43,6 +43,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import java.util.List;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -83,6 +84,10 @@ public class RobotContainer {
     // Build an auto chooser. This will use Commands.none() as the default option.
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData("Auto Chooser", autoChooser);
+
+    //Register the Named Commands in Path Planner
+    NamedCommands.registerCommand("shoot", shoot);
+    NamedCommands.registerCommand("intakeNote", intakeNote);
     // Configure the button bindings
     configureButtonBindings();
 
