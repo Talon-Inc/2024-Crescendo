@@ -14,10 +14,11 @@ public class IntakeNote extends Command {
   Intake intake;
   LED led;
   /** Creates a new Intake. */
-  public IntakeNote(Intake intake, LED led) {
+  public IntakeNote(Intake intake) {
     this.intake = intake;
-    this.led = led;
+    // this.led = led;
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(intake);
   }
 
   // Called when the command is initially scheduled.
@@ -27,12 +28,12 @@ public class IntakeNote extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (intake.isNoteLoaded()) {
+    if (intake.getNoteVoltage() > 1) {
       intake.stop();
-      led.setGreen();
+      // led.setGreen();
     } else {
       intake.intakeNote();
-      led.setBlack();
+      // led.setBlack();
     }
   }
 

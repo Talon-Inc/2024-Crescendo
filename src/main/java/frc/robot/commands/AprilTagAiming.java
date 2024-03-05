@@ -43,22 +43,27 @@ public class AprilTagAiming extends Command {
 
     //Gets Horizontal Offset From Crosshair To Target
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+    double tid = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tid").getDouble(0);
 
-    /* rot: the rotation/angular speed of the robot. As the tx value gets smaller (meaning the horizontal
-    offset from the crosshair to the target gets closer to the center of the camera), the angular speed
-    decreases.
-     */
-    double rot = Kp * tx;
+    if (tid == 7 || tid == 2) {
 
-    /* If the limelight overshoots the target to a point it cannot read it, it kept on spinning.
-    So, this conditional statement will make it stop spinning if it overshoots it and can't detect
-    the April Tag anymore.
-     */ 
-    if (limelight.getIsDetecting() == false) {
-      rot = 0;
+      /* rot: the rotation/angular speed of the robot. As the tx value gets smaller (meaning the horizontal
+      offset from the crosshair to the target gets closer to the center of the camera), the angular speed
+      decreases.
+      */
+      double rot = Kp * tx;
+
+      /* If the limelight overshoots the target to a point it cannot read it, it kept on spinning.
+      So, this conditional statement will make it stop spinning if it overshoots it and can't detect
+      the April Tag anymore.
+      */ 
+      if (limelight.getIsDetecting() == false) {
+        rot = 0;
+      }
+
+      // double rotSpeed = pidController.calculate(headingError, 0);
+      swerveDrive.drive(0, 0, rot, false, false);
     }
-    // double rotSpeed = pidController.calculate(headingError, 0);
-    swerveDrive.drive(0, 0, rot, false, false);
   }
 
   // Called once the command ends or is interrupted.

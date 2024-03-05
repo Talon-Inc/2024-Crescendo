@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,7 +15,7 @@ import frc.robot.Constants.IntakeConstants;
 public class Intake extends SubsystemBase {
   private final CANSparkMax m_intakeMotor1 = new CANSparkMax(IntakeConstants.kIntakeCanId, IntakeConstants.kMotorType);
   private final CANSparkMax m_intakeMotor2 = new CANSparkMax(IntakeConstants.kMiddleIntakeCanId, IntakeConstants.kMotorType);
-  private final DigitalInput m_intakeSensor = new DigitalInput(IntakeConstants.kSensorDIO);
+  private final AnalogInput m_intakeSensor = new AnalogInput(IntakeConstants.kSensorANA);
 
   /** Creates a new Intake. */
   public Intake() {
@@ -27,12 +28,18 @@ public class Intake extends SubsystemBase {
     m_intakeMotor1.setIdleMode(IntakeConstants.kIntakeIdleMode);
     m_intakeMotor2.setIdleMode(IntakeConstants.kIntakeIdleMode);
 
+    m_intakeMotor1.setInverted(true);
+
     m_intakeMotor1.burnFlash();
     m_intakeMotor2.burnFlash();
   }
 
   public boolean isNoteLoaded() {
-    return m_intakeSensor.get();
+    return m_intakeSensor.isAccumulatorChannel();
+  }
+
+  public double getNoteVoltage() {
+    return m_intakeSensor.getVoltage();
   }
 
   public void intakeNote() {
@@ -57,6 +64,6 @@ public class Intake extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putBoolean("Is Note Loaded", isNoteLoaded());
+    SmartDashboard.putNumber("Note Voltage", getNoteVoltage());
   }
 }
