@@ -88,6 +88,7 @@ public class RobotContainer {
     //Register the Named Commands in Path Planner
     NamedCommands.registerCommand("shoot", shoot);
     NamedCommands.registerCommand("intakeNote", intakeNote);
+    
     // Configure the button bindings
     configureButtonBindings();
 
@@ -104,7 +105,7 @@ public class RobotContainer {
             m_robotDrive));
             
     // Constantly run intake, even during autonomous
-    m_intake.setDefaultCommand(intakeNote);
+    // m_intake.setDefaultCommand(intakeNote);
   }
 
   /**

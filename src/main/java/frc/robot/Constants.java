@@ -70,6 +70,8 @@ public final class Constants {
     public static final double[] kShooterFF = { 0.000094, 0.000094 };
     public static final double kShooterMinOutput = -1.0;
     public static final double kShooterMaxOutput = 1.0;
+
+    public static final double kSetPoint = 5000;
   }
 
   public static final class DriveConstants {
