@@ -30,36 +30,40 @@ public final class Constants {
   }
 
   public static final class ClimbConstants {
-    public static final int kClimbLeftCanId = 15;
-    public static final int kLimitSwitchClimbTopDIO = 1;
-    public static final int kLimitSwitchClimbBottomDIO = 2;
+    // Climb motor configuration
+    public static final int kClimbCanId = 15;
     public static final MotorType kMotorType = MotorType.kBrushless;
     public static final IdleMode kIdleMode = IdleMode.kBrake;
     public static final int kCurrentLimit = 40;
+
+    // Climb speed
+    public static final double kSpeed = 0.8;
+
+    // Limit switch ports
+    public static final int kLimitSwitchTopDIOPort = 1;
+    public static final int kLimitSwitchBottomDIOPort = 2;
   }
   
   public static final class IntakeConstants {
-    // Intake CAN IDs
+    // Intake motor configurations
     public static final int kIntakeCanId = 11;
     public static final int kMiddleIntakeCanId = 12;
-
-    public static final int kSensorANA = 0;
-
     public static final MotorType kMotorType = MotorType.kBrushless;
     public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;
     public static final int kCurrentLimit = 40;
 
     // Intake speed
     public static final double kSpeed = 0.45;
+
+    // Photo sensor port
+    public static final int kSensorAnalogPort = 0;
   }
 
   public static final class ShooterConstants {
-    public static final MotorType kMotorType = MotorType.kBrushless;
-
-    // Shooter CAN IDs
+    // Shooter motor configurations
     public static final int m_ShootMotorTopCanID = 13;
     public static final int m_ShootMotorBottomCanID = 14;
-
+    public static final MotorType kMotorType = MotorType.kBrushless;
     public static final IdleMode kShooterIdleMode = IdleMode.kCoast;
     public static final int kShooterSmartCurrentLimit = 20;
 
@@ -145,9 +149,10 @@ public final class Constants {
     public static final double kTurningEncoderPositionPIDMinInput = 0; // radians
     public static final double kTurningEncoderPositionPIDMaxInput = kTurningEncoderPositionFactor; // radians
 
+    // PID values for driving motors
     // { FrontLeft, FrontRight, RearLeft, RearRight }
     public static final double[] kDrivingP = { 0.18, 0.10, 0.16, 0.16 };
-    public static final double[] kDrivingI = { 0, 0, 0, 0 };
+    public static final double[] kDrivingI = { 0.0, 0.0, 0.0, 0.0 };
     public static final double[] kDrivingD = { 0.05, 0.06, 0.05, 0.05 };
     public static final double[] kDrivingFF = {
       1 / kDriveWheelFreeSpeedRps,
@@ -158,9 +163,10 @@ public final class Constants {
     public static final double kDrivingMinOutput = -1;
     public static final double kDrivingMaxOutput = 1;
 
+    // PID values for turning motors
     // { FrontLeft, FrontRight, RearLeft, RearRight }
     public static final double[] kTurningP = { 0.75, 0.75, 0.75, 0.75 };
-    public static final double[] kTurningI = { 0, 0, 0, 0 };
+    public static final double[] kTurningI = { 0.0, 0.0, 0.0, 0.0 };
     public static final double[] kTurningD = { 0.01, 0.01, 0.01, 0.01 };
     public static final double kTurningFF = 0;
     public static final double kTurningMinOutput = -1;

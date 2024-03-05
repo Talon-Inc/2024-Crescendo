@@ -34,15 +34,17 @@ public class Shooter extends SubsystemBase {
     m_shootMotorTop.setIdleMode(ShooterConstants.kShooterIdleMode);
     m_shootMotorBottom.setIdleMode(ShooterConstants.kShooterIdleMode);
 
-    // initalize motor stuff
+    // Invert bottom motor
     m_shootMotorBottom.setInverted(true);
 
+    // PID for top motor
     m_pidControllerTop.setP(ShooterConstants.kShooterP[0]);
     m_pidControllerTop.setI(ShooterConstants.kShooterI[0]);
     m_pidControllerTop.setD(ShooterConstants.kShooterD[0]);
     m_pidControllerTop.setFF(ShooterConstants.kShooterFF[0]);
     m_pidControllerTop.setOutputRange(ShooterConstants.kShooterMinOutput, ShooterConstants.kShooterMaxOutput);
 
+    // PID for bottom motor
     m_pidControllerBottom.setP(ShooterConstants.kShooterP[1]);
     m_pidControllerBottom.setI(ShooterConstants.kShooterI[1]);
     m_pidControllerBottom.setD(ShooterConstants.kShooterD[1]);
@@ -61,6 +63,11 @@ public class Shooter extends SubsystemBase {
   public void stop() {
     m_shootMotorTop.set(0);
     m_shootMotorBottom.set(0);
+  }
+  
+  public boolean isShooterAtSpeed() {
+    double target = ShooterConstants.kSetPoint - 100;
+    return m_encoderTop.getVelocity() > target && m_encoderBottom.getVelocity() > target;
   }
 
   @Override

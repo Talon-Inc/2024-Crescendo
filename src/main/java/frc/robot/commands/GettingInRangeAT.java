@@ -10,7 +10,6 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Limelight;
 
 public class GettingInRangeAT extends Command {
-
   double Kp = 0.1500;
   double Kp_rot = -.0076;
   double maxSpeed = .4;

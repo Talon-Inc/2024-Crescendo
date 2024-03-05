@@ -21,7 +21,7 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
@@ -119,15 +119,15 @@ public class DriveSubsystem extends SubsystemBase {
         });
 
     // SmartDashboard.putNumber("yaw", m_gyro.getYaw()); // Gets updated Yaw of robot
-    SmartDashboard.putNumber("yaw rate", m_gyro.getRate()); // Gets the updated rate of change of yaw
+    // SmartDashboard.putNumber("yaw rate", m_gyro.getRate()); // Gets the updated rate of change of yaw
     // SmartDashboard.putNumber("Mod1ABS", m_frontLeft.getEncoder());
     // SmartDashboard.putNumber("Mod2ABS", m_frontRight.getEncoder());
     // SmartDashboard.putNumber("Mod3ABS", m_rearLeft.getEncoder());
     // SmartDashboard.putNumber("Mod4ABS", m_rearRight.getEncoder());
-    SmartDashboard.putNumber("MOD1Velocity", m_frontLeft.getVelocity());
-    SmartDashboard.putNumber("MOD2Velocity", m_frontRight.getVelocity());
-    SmartDashboard.putNumber("MOD3Velocity", m_rearLeft.getVelocity());
-    SmartDashboard.putNumber("MOD4Velocity", m_rearRight.getVelocity());
+    // SmartDashboard.putNumber("MOD1Velocity", m_frontLeft.getVelocity());
+    // SmartDashboard.putNumber("MOD2Velocity", m_frontRight.getVelocity());
+    // SmartDashboard.putNumber("MOD3Velocity", m_rearLeft.getVelocity());
+    // SmartDashboard.putNumber("MOD4Velocity", m_rearRight.getVelocity());
     // SmartDashboard.putNumber("Mod1ANG", m_frontLeft.getAngVel());
     // SmartDashboard.putNumber("Mod2ANG", m_frontRight.getAngVel());
     // SmartDashboard.putNumber("Mod3ANG", m_rearLeft.getAngVel());

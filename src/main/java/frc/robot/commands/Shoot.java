@@ -9,13 +9,13 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 
 public class Shoot extends Command {
-  Shooter shooter;
-  Intake intake;
+  private final Shooter shooter;
+  private final Intake intake;
+  
   /** Creates a new Shoot. */
   public Shoot(Shooter shooter, Intake intake) {
     this.shooter = shooter;
     this.intake = intake;
-    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
@@ -27,7 +27,7 @@ public class Shoot extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(shooter.isTopShooterAtSpeed() && intake.getNoteVoltage() > 1 && shooter.isBottomShooterAtSpeed()) {
+    if(shooter.isShooterAtSpeed() && intake.isNoteLoaded()) {
       intake.moveIntakeChannel();
     }
   }
