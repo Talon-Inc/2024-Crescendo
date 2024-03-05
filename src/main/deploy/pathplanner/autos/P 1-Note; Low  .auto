@@ -2,16 +2,22 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.2991794154609702,
-      "y": 5.57
+      "x": 0.73,
+      "y": 4.562886845488656
     },
-    "rotation": 0.0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
+          "type": "path",
+          "data": {
+            "pathName": "Low To Shoot"
+          }
+        },
+        {
           "type": "named",
           "data": {
             "name": "Shoot"
@@ -20,30 +26,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": null
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "intakeNote"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": null
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Shoot"
+            "pathName": "Low Shoot To Away"
           }
         }
       ]
     }
   },
-  "folder": "2 Note",
+  "folder": "1 Note",
   "choreoAuto": false
 }

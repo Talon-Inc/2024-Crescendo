@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Top Turn"
+            "pathName": null
           }
         },
         {
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Top Start to Top Note"
+            "pathName": null
           }
         },
         {
@@ -44,7 +44,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Top Note to Shoot"
+            "pathName": null
           }
         },
         {
@@ -62,6 +62,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "2 Note",
   "choreoAuto": false
 }
