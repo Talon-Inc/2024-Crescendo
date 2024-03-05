@@ -67,11 +67,11 @@ public class RobotContainer {
   private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1, 5);
   private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 5);
   //:3
-  private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
-  private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
+  private final ClimbDownCommand ClimbDown = new ClimbDownCommand(m_Climb);
+  private final ClimbUpCommand ClimbUp = new ClimbUpCommand(m_Climb);
   private final Shoot shoot = new Shoot(m_Shooter, m_intake);
   // private final Shoot shoot = new Shoot(m_Shooter, m_intake);
-  private final IntakeNote intakeNote = new IntakeNote(m_intake);
+  private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -99,7 +99,7 @@ public class RobotContainer {
             m_robotDrive));
             
     // Constantly run intake, even during autonomous
-    // m_intake.setDefaultCommand(intakeNote);
+    m_intake.setDefaultCommand(intakeNote);
   }
 
   /**
@@ -128,25 +128,21 @@ public class RobotContainer {
 
     // The B button on the controller
     new JoystickButton(m_driverController, Button.kB.value)
-        .whileTrue(aprilTagAiming);
+        .whileTrue(gettingInRangeAT1);
 
     // X button
     new JoystickButton(m_driverController, Button.kX.value)
-        .whileTrue(climbDown);
-
-    // Y button
-    new JoystickButton(m_driverController, Button.kY.value)
-        .whileTrue(climbUp);
+        .whileTrue(ClimbDown);
 
     // Left bumper
     new JoystickButton(m_driverController, Button.kLeftBumper.value)
         .whileTrue(shoot);
 
-    // Start button
-    new JoystickButton(m_driverController, Button.kStart.value)
-        .whileTrue(intakeNote);
+    // Y button
+    new JoystickButton(m_driverController, Button.kY.value)
+        .whileTrue(ClimbUp);
 
-
+    
     //Right Bumper Button
     // new JoystickButton(m_driverController, Button.kRightBumper.value)
     //     .whileTrue(shoot);

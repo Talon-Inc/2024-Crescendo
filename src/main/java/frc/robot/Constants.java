@@ -33,7 +33,7 @@ public final class Constants {
     public static final int kClimbLeftCanId = 15;
     public static final int kLimitSwitchClimbTopDIO = 1;
     public static final int kLimitSwitchClimbBottomDIO = 2;
-    public static final MotorType kMotorType = MotorType.kBrushless;
+    public static final MotorType kMotorType = MotorType.kBrushed;
     public static final IdleMode kIdleMode = IdleMode.kBrake;
     public static final int kCurrentLimit = 40;
   }
@@ -43,14 +43,14 @@ public final class Constants {
     public static final int kIntakeCanId = 11;
     public static final int kMiddleIntakeCanId = 12;
 
-    public static final int kSensorANA = 0;
+    public static final int kSensorDIO = 0;
 
-    public static final MotorType kMotorType = MotorType.kBrushless;
+    public static final MotorType kMotorType = MotorType.kBrushed;
     public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;
-    public static final int kCurrentLimit = 40;
+    public static final int kCurrentLimit = 20;
 
     // Intake speed
-    public static final double kSpeed = 0.45;
+    public static final double kSpeed = 0.25;
   }
 
   public static final class ShooterConstants {
@@ -71,7 +71,7 @@ public final class Constants {
     public static final double kShooterMinOutput = -1.0;
     public static final double kShooterMaxOutput = 1.0;
 
-    public static final double kSetPoint = 6000;
+    public static final double kSetPoint = 5000;
   }
 
   public static final class DriveConstants {

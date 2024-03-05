@@ -27,7 +27,7 @@ public class Shoot extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(shooter.isTopShooterAtSpeed() && intake.getNoteVoltage() > 1 && shooter.isBottomShooterAtSpeed()) {
+    if(shooter.isShooterAtSpeed() && intake.isNoteLoaded()) {
       intake.moveIntakeChannel();
     }
   }

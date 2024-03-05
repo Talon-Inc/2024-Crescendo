@@ -63,12 +63,8 @@ public class Shooter extends SubsystemBase {
     m_shootMotorBottom.set(0);
   }
 
-  public boolean isTopShooterAtSpeed() {
-    return m_encoderTop.getVelocity() > 5900;
-  }
-
-  public boolean isBottomShooterAtSpeed() {
-    return m_encoderBottom.getVelocity() > 5900;
+  public Boolean isShooterAtSpeed() {
+    return m_encoderTop.getVelocity() > 4900;
   }
 
   @Override
