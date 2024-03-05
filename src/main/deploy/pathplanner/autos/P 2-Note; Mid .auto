@@ -2,25 +2,25 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.9,
-      "y": 5.57
+      "x": 1.2406808661598334,
+      "y": 5.567111941824834
     },
-    "rotation": 180.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "Shoot"
+            "pathName": "Mid To Shoot"
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "Mid Start To Mid Note"
+            "name": "Shoot"
           }
         },
         {
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Mid Note to Shoot"
+            "pathName": "Mid Shoot To Note"
           }
         },
         {
@@ -44,6 +44,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "2 Note",
   "choreoAuto": false
 }
