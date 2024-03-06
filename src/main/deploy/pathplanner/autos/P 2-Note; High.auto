@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.8678567784485995,
-      "y": 7.0
+      "x": 0.68,
+      "y": 6.58
     },
-    "rotation": 0.0
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
@@ -14,37 +14,44 @@
         {
           "type": "path",
           "data": {
-            "pathName": null
+            "pathName": "Top To Shoot"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Top Shoot To Note"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              }
+            ]
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": null
+            "pathName": "Top Note To Shoot"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "intakeNote"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": null
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Shoot"
+            "name": "shoot"
           }
         }
       ]
