@@ -81,13 +81,14 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    // Build an auto chooser. This will use Commands.none() as the default option.
-    autoChooser = AutoBuilder.buildAutoChooser();
-    SmartDashboard.putData("Auto Chooser", autoChooser);
-
+    autoChooser = new SendableChooser<>();
     //Register the Named Commands in Path Planner
     NamedCommands.registerCommand("shoot", shoot);
     NamedCommands.registerCommand("intakeNote", intakeNote);
+
+    // Build an auto chooser. This will use Commands.none() as the default option.
+    // autoChooser.addOption("StupidCrap", AutoBuilder.buildAuto("New Auto"));
+    // SmartDashboard.putData("Auto Chooser", autoChooser);
     
     // Configure the button bindings
     configureButtonBindings();
