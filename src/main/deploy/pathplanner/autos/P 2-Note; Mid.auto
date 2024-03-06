@@ -3,7 +3,7 @@
   "startingPose": {
     "position": {
       "x": 1.24,
-      "y": 5.567111941824834
+      "y": 5.54
     },
     "rotation": 0
   },
@@ -20,25 +20,38 @@
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "shoot"
           }
         },
         {
-          "type": "named",
+          "type": "parallel",
           "data": {
-            "name": "intakeNote"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Mid Shoot To Note"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              }
+            ]
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Mid Shoot To Note"
+            "pathName": "Mid Note To Shoot"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "shoot"
           }
         }
       ]

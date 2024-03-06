@@ -21,6 +21,7 @@ import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.AprilTagAiming;
+import frc.robot.commands.AutoShoot;
 import frc.robot.commands.ClimbDownCommand;
 import frc.robot.commands.ClimbUpCommand;
 import frc.robot.commands.GettingInRangeAT;
@@ -44,6 +45,7 @@ import java.util.List;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -73,6 +75,7 @@ public class RobotContainer {
   private final Shoot shoot = new Shoot(m_Shooter, m_intake);
   // private final Shoot shoot = new Shoot(m_Shooter, m_intake);
   private final IntakeNote intakeNote = new IntakeNote(m_intake);
+  private final AutoShoot autoShoot = new AutoShoot(m_Shooter, m_intake);
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
@@ -81,17 +84,24 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    // Build an auto chooser. This will use Commands.none() as the default option.
-    autoChooser = AutoBuilder.buildAutoChooser();
-    SmartDashboard.putData("Auto Chooser", autoChooser);
+    autoChooser = new SendableChooser<>();
 
     //Register the Named Commands in Path Planner
-    NamedCommands.registerCommand("shoot", shoot);
+    NamedCommands.registerCommand("shoot", autoShoot);
     NamedCommands.registerCommand("intakeNote", intakeNote);
+
+    // Build an auto chooser. This will use Commands.none() as the default option.
+    autoChooser.addOption("P 1-Note; High", AutoBuilder.buildAuto("P 1-Note; High"));
+    autoChooser.addOption("P 1-Note; Low", AutoBuilder.buildAuto("P 1-Note; Low  "));
+    autoChooser.addOption("P 2-Note; High", AutoBuilder.buildAuto("P 2-Note; High"));
+    autoChooser.addOption("P 2-Note; Low", AutoBuilder.buildAuto("P 2-Note; Low"));
+    autoChooser.addOption("P 2-Note; Mid", AutoBuilder.buildAuto("P 2-Note; Mid"));
+    autoChooser.addOption("Shoot Test", AutoBuilder.buildAuto("Shoot Test"));
+    SmartDashboard.putData("Auto Chooser", autoChooser);
     
     // Configure the button bindings
     configureButtonBindings();
-    
+
     // Configure default commands
     m_robotDrive.setDefaultCommand(
         // The left stick controls translation of the robot.
