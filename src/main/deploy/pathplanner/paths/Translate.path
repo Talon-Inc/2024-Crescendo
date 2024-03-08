@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9,
-        "y": 7.0
+        "x": 2.94,
+        "y": 5.54
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.9026396514331485,
-        "y": 7.004798511021523
+        "x": 3.0390761346245654,
+        "y": 5.639076134624565
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Mid Rotate"
     },
     {
       "anchor": {
-        "x": 2.0,
-        "y": 7.0
+        "x": 1.503924338014948,
+        "y": 3.948652077826721
       },
       "prevControl": {
-        "x": 1.9969424733653405,
-        "y": 6.981410185034088
+        "x": 1.4253192742870624,
+        "y": 3.8700470140988354
       },
       "nextControl": null,
       "isLocked": false,
@@ -34,19 +34,19 @@
   "globalConstraints": {
     "maxVelocity": 1.0,
     "maxAcceleration": 0.5,
-    "maxAngularVelocity": 90.0,
-    "maxAngularAcceleration": 45.0
+    "maxAngularVelocity": 1.0,
+    "maxAngularAcceleration": 1.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -145.0,
+    "rotation": 45.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": null,
   "previewStartingState": {
-    "rotation": 180.0,
-    "velocity": 0
+    "rotation": 45.0,
+    "velocity": 0.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }
