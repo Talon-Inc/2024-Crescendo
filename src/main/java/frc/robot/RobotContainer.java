@@ -97,6 +97,7 @@ public class RobotContainer {
     autoChooser.addOption("P 2-Note; Low", AutoBuilder.buildAuto("P 2-Note; Low"));
     autoChooser.addOption("P 2-Note; Mid", AutoBuilder.buildAuto("P 2-Note; Mid"));
     autoChooser.addOption("Shoot Test", AutoBuilder.buildAuto("Shoot Test"));
+    autoChooser.addOption("Fun and Games", AutoBuilder.buildAuto("Fun And Games"));
     SmartDashboard.putData("Auto Chooser", autoChooser);
     
     // Configure the button bindings
@@ -160,7 +161,7 @@ public class RobotContainer {
 
     // Start button
     new JoystickButton(m_driverController, Button.kStart.value)
-        .whileTrue(intakeNote);
+        .toggleOnTrue(intakeNote);
 
 
     //Right Bumper Button
