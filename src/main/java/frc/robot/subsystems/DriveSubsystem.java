@@ -84,9 +84,9 @@ public class DriveSubsystem extends SubsystemBase {
         this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
         this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
         new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-            new PIDConstants(0.09, 0.0, 0.0), // Translation PID constants
-            new PIDConstants(0.15, 0.0, 0.0), // Rotation PID constants
-            4.5, // Max module speed, in m/s
+            new PIDConstants(1, 0.0, 0.0), // Translation PID constants
+            new PIDConstants(0.04, 0.0, 0.0), // Rotation PID constants
+            DriveConstants.kMaxSpeedMetersPerSecond, // Max module speed, in m/s
             0.409, // Drive base radius in meters. Distance from robot center to furthest module.
             new ReplanningConfig() // Default path replanning config. See the API for the options here
         ),
@@ -143,10 +143,9 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void driveRobotRelative(ChassisSpeeds robotRelativeSpeeds) {
-    var states = Constants.DriveConstants.kDriveKinematics.toSwerveModuleStates(robotRelativeSpeeds);
-
-    SwerveDriveKinematics.desaturateWheelSpeeds(states, Constants.DriveConstants.kMaxSpeedMetersPerSecond);
-
+    robotRelativeSpeeds = ChassisSpeeds.discretize(robotRelativeSpeeds, 0.02);
+    var states = DriveConstants.kDriveKinematics.toSwerveModuleStates(robotRelativeSpeeds);
+    SwerveDriveKinematics.desaturateWheelSpeeds(states, DriveConstants.kMaxSpeedMetersPerSecond);
     setModuleStates(states);
   }
 
