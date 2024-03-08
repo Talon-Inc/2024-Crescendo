@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.93,
-        "y": 4.19
+        "x": 1.07,
+        "y": 3.95
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.406426755846387,
-        "y": 3.948652077826721
+        "x": 1.4064268427604292,
+        "y": 3.958398355105442
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Low To Shoot"
     },
     {
       "anchor": {
-        "x": 2.683645082254536,
-        "y": 4.085148692862707
+        "x": 2.8909454969907094,
+        "y": 4.081259900411539
       },
       "prevControl": {
-        "x": 2.633645082254536,
-        "y": 4.085148692862707
+        "x": 2.8409454969907095,
+        "y": 4.081259900411539
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,18 +32,18 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 0.5,
-    "maxAngularVelocity": 0.0,
-    "maxAngularAcceleration": 0.0
+    "maxVelocity": 5.0,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 250.0,
+    "maxAngularAcceleration": 270.0
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 0,
-    "rotateFast": true
+    "velocity": 0.0,
+    "rotation": 0.0,
+    "rotateFast": false
   },
   "reversed": false,
-  "folder": "To Notes",
+  "folder": null,
   "previewStartingState": {
     "rotation": -60.0,
     "velocity": 0

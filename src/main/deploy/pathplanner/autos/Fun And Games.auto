@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.73,
-      "y": 4.56
+      "x": 1.24,
+      "y": 5.54
     },
-    "rotation": -60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Low To Shoot"
+            "pathName": "Mid To Shoot"
           }
         },
         {
@@ -30,7 +30,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Low Shoot To Note"
+                  "pathName": "Mid Shoot To Note"
                 }
               },
               {
@@ -40,6 +40,18 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Mid Rotate"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Translate"
           }
         }
       ]

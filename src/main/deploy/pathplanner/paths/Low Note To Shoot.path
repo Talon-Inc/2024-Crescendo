@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.176657654978019,
-        "y": 3.9389023196098654
+        "x": 2.0889098310263146,
+        "y": 4.046149659995282
       },
       "isLocked": false,
       "linkedName": null
@@ -20,8 +20,8 @@
         "y": 4.231395066115549
       },
       "prevControl": {
-        "x": 1.1041842511238489,
-        "y": 3.948652077826722
+        "x": 1.3771774811958186,
+        "y": 4.221645307898693
       },
       "nextControl": null,
       "isLocked": false,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "From Notes",
+  "folder": null,
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
