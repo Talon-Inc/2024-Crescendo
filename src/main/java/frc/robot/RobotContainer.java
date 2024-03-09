@@ -4,21 +4,17 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.trajectory.Trajectory;
-import edu.wpi.first.math.trajectory.TrajectoryConfig;
-import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Constants.AutoConstants;
-import frc.robot.Constants.DriveConstants;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.AprilTagAiming;
 import frc.robot.commands.AutoShoot;
@@ -33,19 +29,6 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LED;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Shooter;
-// import frc.robot.commands.AlignAtAprilTag;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.RunCommand;
-import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
-
-import java.util.List;
-
-import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -61,7 +44,6 @@ public class RobotContainer {
   private final Limelight m_Limelight = new Limelight();
   private final Climb m_Climb = new Climb();
   private final Shooter m_Shooter = new Shooter();
-  // private final Shooter m_Shooter = new Shooter();
   private final Intake m_intake = new Intake();
   private final LED m_led = new LED();
 
@@ -74,7 +56,7 @@ public class RobotContainer {
   private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
   private final Shoot shoot = new Shoot(m_Shooter, m_intake);
   // private final Shoot shoot = new Shoot(m_Shooter, m_intake);
-  private final IntakeNote intakeNote = new IntakeNote(m_intake);
+  private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
   private final AutoShoot autoShoot = new AutoShoot(m_Shooter, m_intake);
 
   // The driver's controller
@@ -114,9 +96,6 @@ public class RobotContainer {
                 -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
                 true, true),
             m_robotDrive));
-            
-    // Constantly run intake, even during autonomous
-    // m_intake.setDefaultCommand(intakeNote);
   }
 
   /**
@@ -141,7 +120,7 @@ public class RobotContainer {
             m_robotDrive));
 
     // new JoystickButton(m_driverController, Button.kB.value)
-     //   .whileTrue(alignAtAprilTag);
+    //   .whileTrue(alignAtAprilTag);
 
     // The B button on the controller
     new JoystickButton(m_driverController, Button.kB.value)
@@ -180,46 +159,5 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     return autoChooser.getSelected();
-    // // Create config for trajectory
-    // TrajectoryConfig config = new TrajectoryConfig(
-    // AutoConstants.kMaxSpeedMetersPerSecond,
-    // AutoConstants.kMaxAccelerationMetersPerSecondSquared)
-    // // Add kinematics to ensure max speed is actually obeyed
-    // .setKinematics(DriveConstants.kDriveKinematics);
-
-    // // An example trajectory to follow. All units in meters.
-    // Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
-    // // Start at the origin facing the +X direction
-    // new Pose2d(0, 0, new Rotation2d(0)),
-    // // Pass through these two interior waypoints, making an 's' curve path
-    // List.of(new Translation2d(1, 1), new Translation2d(2, -1)),
-    // // End 3 meters straight ahead of where we started, facing forward
-    // new Pose2d(3, 0, new Rotation2d(0)),
-    // config);
-
-    // var thetaController = new ProfiledPIDController(
-    // AutoConstants.kPThetaController, 0, 0,
-    // AutoConstants.kThetaControllerConstraints);
-    // thetaController.enableContinuousInput(-Math.PI, Math.PI);
-
-    // SwerveControllerCommand swerveControllerCommand = new
-    // SwerveControllerCommand(
-    // exampleTrajectory,
-    // m_robotDrive::getPose, // Functional interface to feed supplier
-    // DriveConstants.kDriveKinematics,
-
-    // // Position controllers
-    // new PIDController(AutoConstants.kPXController, 0, 0),
-    // new PIDController(AutoConstants.kPYController, 0, 0),
-    // thetaController,
-    // m_robotDrive::setModuleStates,
-    // m_robotDrive);
-
-    // // Reset odometry to the starting pose of the trajectory.
-    // m_robotDrive.resetOdometry(exampleTrajectory.getInitialPose());
-
-    // // Run path following command, then stop at the end.
-    // return swerveControllerCommand.andThen(() -> m_robotDrive.drive(0, 0, 0,
-    // false, false));
   }
 }

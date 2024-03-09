@@ -6,16 +6,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
-// import frc.robot.subsystems.LED;
+import frc.robot.subsystems.LED;
 
 public class IntakeNote extends Command {
   private final Intake intake;
-  // private final LED led;
+  private final LED led;
   
   /** Creates a new Intake. */
-  public IntakeNote(Intake intake) {
+  public IntakeNote(Intake intake, LED led) {
     this.intake = intake;
-    // this.led = led;
+    this.led = led;
     addRequirements(intake);
   }
 
@@ -33,6 +33,7 @@ public class IntakeNote extends Command {
   @Override
   public void end(boolean interrupted) {
     intake.stop();
+    led.setGold();
   }
 
   // Returns true when the command should end.
