@@ -51,7 +51,7 @@ public class RobotContainer {
 
   // The robot's commands
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
-  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.3);
+  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.25);
   // private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 2);
 
   private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
