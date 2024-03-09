@@ -24,34 +24,9 @@
           }
         },
         {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Top Shoot To Note"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "intakeNote"
-                }
-              }
-            ]
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "Top Note To Shoot"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shoot"
+            "pathName": "Top Shoot To Note"
           }
         }
       ]
