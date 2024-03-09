@@ -37,7 +37,7 @@ public final class Constants {
     public static final int kCurrentLimit = 40;
 
     // Climb speed
-    public static final double kSpeed = 0.8;
+    public static final double kSpeed = 1.0;
 
     // Limit switch ports
     public static final int kLimitSwitchTopDIOPort = 1;
