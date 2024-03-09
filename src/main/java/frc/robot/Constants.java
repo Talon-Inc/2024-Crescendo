@@ -26,7 +26,7 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final class LedConstants {
-    public static final int kLedChannel = 0;
+    public static final int kLedChannel = 5;
   }
 
   public static final class ClimbConstants {
