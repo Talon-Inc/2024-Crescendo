@@ -8,7 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
@@ -73,7 +73,7 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Shooter_Top", m_encoderTop.getVelocity());
-    SmartDashboard.putNumber("Shooter_Bottom", m_encoderBottom.getVelocity());
+    // SmartDashboard.putNumber("Shooter_Top", m_encoderTop.getVelocity());
+    // SmartDashboard.putNumber("Shooter_Bottom", m_encoderBottom.getVelocity());
   }
 }
