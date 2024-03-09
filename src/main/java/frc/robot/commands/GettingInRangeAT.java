@@ -22,7 +22,7 @@ public class GettingInRangeAT extends Command {
   Limelight limelight;
 
   /** Creates a new GettingInRangeAT. */
-  public GettingInRangeAT(DriveSubsystem swerveDrive, Limelight limelight, double desiredDistance, int tagID) {
+  public GettingInRangeAT(DriveSubsystem swerveDrive, Limelight limelight, double desiredDistance) {
 
     this.swerveDrive = swerveDrive;
     this.limelight = limelight;
@@ -41,24 +41,21 @@ public class GettingInRangeAT extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
-      double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-      double tid = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tid").getDouble(0);
+    double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
+    double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+    double tid = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tid").getDouble(0);
 
-      double[] botpose_targetspace = limelight.getBotPositionToTargetSpace();
-      double currentDistanceZ = -botpose_targetspace[2];
-      double currentDistanceX = -botpose_targetspace[0];
-      double distance = Math.hypot(currentDistanceX, currentDistanceZ);
+    double[] botpose_targetspace = limelight.getBotPositionToTargetSpace();
+    double currentDistanceZ = -botpose_targetspace[2];
+    double currentDistanceX = -botpose_targetspace[0];
+    double distance = Math.hypot(currentDistanceX, currentDistanceZ);
 
-      double distanceError = desiredDistance - distance;
+    double distanceError = desiredDistance - distance;
+    if (tid == 4 || tid== 7) {
 
       double speedX = distanceError * Kp;
       // double speedY = distanceErrorX * Kp;
       // double rot = tx * Kp_rot;
-
-      if (tid != tagID) {
-        tv = 0;
-      }
 
       if (tv == 0) {
         speedX = 0;
@@ -83,8 +80,8 @@ public class GettingInRangeAT extends Command {
         speedX = 0;
       }
     
-    swerveDrive.drive(speedX, 0, 0, false, false);
-
+      swerveDrive.drive(speedX, 0, 0, false, false);
+    }
   }
 
   // Called once the command ends or is interrupted.

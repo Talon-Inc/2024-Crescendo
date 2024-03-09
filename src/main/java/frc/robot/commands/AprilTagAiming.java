@@ -45,7 +45,7 @@ public class AprilTagAiming extends Command {
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
     double tid = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tid").getDouble(0);
 
-    if (tid == 7 || tid == 2) {
+    if (tid == 7 || tid == 4) {
 
       /* rot: the rotation/angular speed of the robot. As the tx value gets smaller (meaning the horizontal
       offset from the crosshair to the target gets closer to the center of the camera), the angular speed
