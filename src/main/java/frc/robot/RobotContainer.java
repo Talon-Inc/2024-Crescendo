@@ -49,8 +49,8 @@ public class RobotContainer {
 
   // private final AlignAtAprilTag alignAtAprilTag = new AlignAtAprilTag(m_robotDrive, m_Limelight, 1, 1);
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
-  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 2, 1, 5);
-  private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 0, 5);
+  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.3, 2);
+  private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 2);
   //:3
   private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
   private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
@@ -141,6 +141,8 @@ public class RobotContainer {
     // Start button
     new JoystickButton(m_driverController, Button.kStart.value)
         .toggleOnTrue(intakeNote);
+
+    new JoystickButton(m_driverController, Button.kBack.value).whileTrue(gettingInRangeAT1);
 
 
     //Right Bumper Button

@@ -10,25 +10,23 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Limelight;
 
 public class GettingInRangeAT extends Command {
-  double Kp = 0.1500;
-  double Kp_rot = -.0076;
+  double Kp = 0.5000;
+  // double Kp_rot = -.0076;
   double maxSpeed = .4;
 
   double currentDistanceZ;
-  double desiredZ;
-  double desiredX;
+  double desiredDistance;
   int tagID;
 
   DriveSubsystem swerveDrive;
   Limelight limelight;
 
   /** Creates a new GettingInRangeAT. */
-  public GettingInRangeAT(DriveSubsystem swerveDrive, Limelight limelight, double desiredZ, double desiredX, int tagID) {
+  public GettingInRangeAT(DriveSubsystem swerveDrive, Limelight limelight, double desiredDistance, int tagID) {
 
     this.swerveDrive = swerveDrive;
     this.limelight = limelight;
-    this.desiredZ = desiredZ;
-    this.desiredX = desiredX;
+    this.desiredDistance = desiredDistance;
     this.tagID = tagID;
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -50,13 +48,13 @@ public class GettingInRangeAT extends Command {
       double[] botpose_targetspace = limelight.getBotPositionToTargetSpace();
       double currentDistanceZ = -botpose_targetspace[2];
       double currentDistanceX = -botpose_targetspace[0];
+      double distance = Math.hypot(currentDistanceX, currentDistanceZ);
 
-      double distanceErrorZ = desiredZ - currentDistanceZ;
-      double distanceErrorX = desiredX - currentDistanceX;
+      double distanceError = desiredDistance - distance;
 
-      double speedX = -distanceErrorZ * Kp;
-      double speedY = distanceErrorX * Kp;
-      double rot = tx * Kp_rot;
+      double speedX = distanceError * Kp;
+      // double speedY = distanceErrorX * Kp;
+      // double rot = tx * Kp_rot;
 
       if (tid != tagID) {
         tv = 0;
@@ -64,8 +62,8 @@ public class GettingInRangeAT extends Command {
 
       if (tv == 0) {
         speedX = 0;
-        speedY = 0;
-        rot = 0;
+        // speedY = 0;
+        // rot = 0;
       }
       
       // I don't want the robot to go a very fast speedY/X if it is very far away from robot
@@ -73,19 +71,19 @@ public class GettingInRangeAT extends Command {
         speedX = maxSpeed;
       }
 
-      if (Math.abs(speedY) > maxSpeed) {
-        speedY = maxSpeed;
-      }
+      // if (Math.abs(speedY) > maxSpeed) {
+      //   speedY = maxSpeed;
+      // }
 
-      if (Math.abs(distanceErrorX) < 0.1) {
-        speedY = 0;
-      }
+      // if (Math.abs(distanceErrorX) < 0.1) {
+      //   speedY = 0;
+      // }
 
-      if (Math.abs(distanceErrorZ) < 0.1) {
+      if (Math.abs(distanceError) < 0.1) {
         speedX = 0;
       }
     
-    swerveDrive.drive(speedX, speedY, rot, false, false);
+    swerveDrive.drive(speedX, 0, 0, false, false);
 
   }
 
