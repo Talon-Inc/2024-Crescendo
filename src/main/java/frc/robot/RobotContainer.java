@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
@@ -22,6 +23,7 @@ import frc.robot.commands.ClimbDownCommand;
 import frc.robot.commands.ClimbUpCommand;
 import frc.robot.commands.GettingInRangeAT;
 import frc.robot.commands.IntakeNote;
+import frc.robot.commands.OuttakeNote;
 import frc.robot.commands.Shoot;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveSubsystem;
@@ -56,6 +58,7 @@ public class RobotContainer {
   private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
   private final Shoot shoot = new Shoot(m_Shooter, m_intake);
   private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
+  private final OuttakeNote outtakeNote = new OuttakeNote(m_intake);
   private final AutoShoot autoShoot = new AutoShoot(m_Shooter, m_intake);
 
   // The driver's controller
@@ -135,13 +138,13 @@ public class RobotContainer {
 
     // Left bumper
     new JoystickButton(m_driverController, Button.kLeftBumper.value)
-        .whileTrue(shoot);
+        .whileTrue(new ParallelCommandGroup(shoot, new RunCommand(
+            () -> m_robotDrive.setX(),
+            m_robotDrive)));
 
     // Right bumper
     new JoystickButton(m_driverController, Button.kRightBumper.value)
-    .whileTrue(new RunCommand(
-        () -> m_robotDrive.setX(),
-        m_robotDrive));
+    .whileTrue(outtakeNote);
   }
 
   /**
