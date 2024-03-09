@@ -37,8 +37,8 @@ import frc.robot.subsystems.Shooter;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-
   private final SendableChooser<Command> autoChooser;
+
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   private final Limelight m_Limelight = new Limelight();
@@ -47,15 +47,14 @@ public class RobotContainer {
   private final Intake m_intake = new Intake();
   private final LED m_led = new LED();
 
-  // private final AlignAtAprilTag alignAtAprilTag = new AlignAtAprilTag(m_robotDrive, m_Limelight, 1, 1);
+  // The robot's commands
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
   private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.3, 2);
   private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 2);
-  //:3
+
   private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
   private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
   private final Shoot shoot = new Shoot(m_Shooter, m_intake);
-  // private final Shoot shoot = new Shoot(m_Shooter, m_intake);
   private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
   private final AutoShoot autoShoot = new AutoShoot(m_Shooter, m_intake);
 
@@ -108,50 +107,41 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(m_driverController, Button.kRightBumper.value)
-        .whileTrue(new RunCommand(
-            () -> m_robotDrive.setX(),
-            m_robotDrive));
-    
-    // The A button on controller (Resets the field relativity)
+    // A button (Resets the field relativity)
     new JoystickButton(m_driverController, Button.kA.value)
-        .whileTrue(new RunCommand(
+        .onTrue(new RunCommand(
             () -> m_robotDrive.zeroHeading(),
             m_robotDrive));
 
-    // new JoystickButton(m_driverController, Button.kB.value)
-    //   .whileTrue(alignAtAprilTag);
-
-    // The B button on the controller
+    // B button
     new JoystickButton(m_driverController, Button.kB.value)
         .whileTrue(aprilTagAiming);
 
     // X button
     new JoystickButton(m_driverController, Button.kX.value)
-        .whileTrue(climbDown);
+        .toggleOnTrue(intakeNote);
 
     // Y button
     new JoystickButton(m_driverController, Button.kY.value)
+        .whileTrue(gettingInRangeAT1);
+
+    // Start button
+    new JoystickButton(m_driverController, Button.kStart.value)
         .whileTrue(climbUp);
+
+    // Back button
+    new JoystickButton(m_driverController, Button.kBack.value)
+        .whileTrue(climbDown);
 
     // Left bumper
     new JoystickButton(m_driverController, Button.kLeftBumper.value)
         .whileTrue(shoot);
 
-    // Start button
-    new JoystickButton(m_driverController, Button.kStart.value)
-        .toggleOnTrue(intakeNote);
-
-    new JoystickButton(m_driverController, Button.kBack.value).whileTrue(gettingInRangeAT1);
-
-
-    //Right Bumper Button
-    // new JoystickButton(m_driverController, Button.kRightBumper.value)
-    //     .whileTrue(shoot);
-
-    // // The X button on controller
-    // new JoystickButton(m_driverController, Button.kCircle.value)
-    // .whileTrue(gettingInRangeAT2);
+    // Right bumper
+    new JoystickButton(m_driverController, Button.kRightBumper.value)
+    .whileTrue(new RunCommand(
+        () -> m_robotDrive.setX(),
+        m_robotDrive));
   }
 
   /**
