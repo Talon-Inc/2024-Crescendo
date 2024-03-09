@@ -10,23 +10,24 @@ import frc.robot.Constants.LedConstants;
 
 public class LED extends SubsystemBase {
   private final PWMSparkMax led = new PWMSparkMax(LedConstants.kLedChannel);
-  private double color = 0;
 
   /** Creates a new LED. */
   public LED() {}
 
-  public void setGreen() {
-    color = 0.77;
-    led.set(color);
-  }
-
   public void setBlack() {
-    color = 0.99;
-    led.set(color);
+    led.set(0.99);
   }
 
-  public double color() {
-    return color;
+  public void setGreen() {
+    led.set(0.77);
+  }
+
+  public void setGold() {
+    led.set(0.67);
+  }
+
+  public void strobeGold() {
+    led.set(0.35);
   }
 
   @Override
