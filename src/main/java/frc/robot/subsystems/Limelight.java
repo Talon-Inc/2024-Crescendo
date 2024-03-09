@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Limelight extends SubsystemBase {
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-  NetworkTableEntry tv = table.getEntry("tv"); //Whether the limelight has any valid targets (0 if no target; 1 if target)
-  NetworkTableEntry tx = table.getEntry("tx"); //Horizontal Offset From Crosshair To Target
-  NetworkTableEntry ty = table.getEntry("ty"); //Vertical Offset From Crosshair To Target
-  NetworkTableEntry ta = table.getEntry("ta"); //Target Area
-  NetworkTableEntry tid = table.getEntry("tid"); //ID of the primary in-view AprilTag
+  NetworkTableEntry tv = table.getEntry("tv"); // Whether the limelight has any valid targets (0 if no target; 1 if target)
+  NetworkTableEntry tx = table.getEntry("tx"); // Horizontal Offset From Crosshair To Target
+  NetworkTableEntry ty = table.getEntry("ty"); // Vertical Offset From Crosshair To Target
+  NetworkTableEntry ta = table.getEntry("ta"); // Target Area
+  NetworkTableEntry tid = table.getEntry("tid"); // ID of the primary in-view AprilTag
   NetworkTableEntry led = table.getEntry("ledMode");
 
   NetworkTableEntry robotPoseTargetSpace = table.getEntry("botpose_targetspace");
@@ -30,7 +30,7 @@ public class Limelight extends SubsystemBase {
   double a = ta.getDouble(0);
   double[] id = tid.getDoubleArray(new double[6]);
 
-  double angleToGoalRadians = y * (3.14159/180); //vertical angle from camera to April Tag in Radians
+  double angleToGoalRadians = y * (3.14159/180); // vertical angle from camera to April Tag in Radians
 
   double distanceToTarget = 0;
   double xToTarget, yToTarget, rotToTarget;
@@ -38,9 +38,7 @@ public class Limelight extends SubsystemBase {
   float kP = -.1f;
 
   /** Creates a new Limelight. */
-  public Limelight() {
-    //post to smart dashboard periodically
-  }
+  public Limelight() {}
 
   // public double estimateDistance() {
   //   double distanceFromLimelightToGoal = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
