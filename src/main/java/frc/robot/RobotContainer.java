@@ -51,9 +51,7 @@ public class RobotContainer {
 
   // The robot's commands
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
-  private final GettingInRangeAT gettingInRangeAT1 = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.25);
-  // private final GettingInRangeAT gettingInRangeAT2 = new GettingInRangeAT(m_robotDrive, m_Limelight, 3, 2);
-
+  private final GettingInRangeAT gettingInRangeAT = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.25);
   private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
   private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
   private final Shoot shoot = new Shoot(m_Shooter, m_intake);
@@ -95,7 +93,7 @@ public class RobotContainer {
             () -> m_robotDrive.drive(
                 -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
                 -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(.75*m_driverController.getRightX(), OIConstants.kDriveDeadband),
                 true, true),
             m_robotDrive));
   }
@@ -126,7 +124,7 @@ public class RobotContainer {
 
     // Y button
     new JoystickButton(m_driverController, Button.kY.value)
-        .whileTrue(gettingInRangeAT1);
+        .whileTrue(gettingInRangeAT);
 
     // Start button
     new JoystickButton(m_driverController, Button.kStart.value)
