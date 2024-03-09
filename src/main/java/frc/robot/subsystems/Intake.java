@@ -57,9 +57,14 @@ public class Intake extends SubsystemBase {
     return m_intakeSensor.getVoltage() > 1;
   }
 
+  public boolean isIntakeRunning() {
+    return m_intakeMotor1.getBusVoltage() > 0;
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     SmartDashboard.putBoolean("Note Loaded", isNoteLoaded());
+    SmartDashboard.putBoolean("Inake Running", isIntakeRunning());
   }
 }
