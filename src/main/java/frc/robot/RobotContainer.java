@@ -73,11 +73,13 @@ public class RobotContainer {
     NamedCommands.registerCommand("intakeNote", intakeNote);
 
     // Build an auto chooser. This will use Commands.none() as the default option.
+    autoChooser.addOption("P 0-Note", AutoBuilder.buildAuto("P 0-Note"));
     autoChooser.addOption("P 1-Note; High", AutoBuilder.buildAuto("P 1-Note; High"));
+    // 1-Note Mid?
     autoChooser.addOption("P 1-Note; Low", AutoBuilder.buildAuto("P 1-Note; Low  "));
     autoChooser.addOption("P 2-Note; High", AutoBuilder.buildAuto("P 2-Note; High"));
-    autoChooser.addOption("P 2-Note; Low", AutoBuilder.buildAuto("P 2-Note; Low"));
     autoChooser.addOption("P 2-Note; Mid", AutoBuilder.buildAuto("P 2-Note; Mid"));
+    autoChooser.addOption("P 2-Note; Low", AutoBuilder.buildAuto("P 2-Note; Low"));
     autoChooser.addOption("Shoot Test", AutoBuilder.buildAuto("Shoot Test"));
     autoChooser.addOption("Fun and Games", AutoBuilder.buildAuto("Fun And Games"));
     SmartDashboard.putData("Auto Chooser", autoChooser);
