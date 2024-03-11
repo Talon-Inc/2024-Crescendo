@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.1734895937694858,
-        "y": 3.8528652235621155
+        "x": 1.0095378821285446,
+        "y": 3.8294435504705535
       },
       "isLocked": false,
       "linkedName": "Low To Shoot"
     },
     {
       "anchor": {
-        "x": 4.733583903687064,
-        "y": 1.475565404768469
+        "x": 0.5762369299346287,
+        "y": 3.50154012718867
       },
       "prevControl": {
-        "x": 4.511078009317216,
-        "y": 1.7683363184130034
+        "x": 0.7167669684840067,
+        "y": 3.560094309917578
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Low Back 2"
     }
   ],
   "rotationTargets": [],

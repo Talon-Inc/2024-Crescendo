@@ -49,13 +49,13 @@ public class RobotContainer {
   private final Intake m_intake = new Intake();
   private final LED m_led = new LED();
 
-  // The robot's commands
+  // The robot's commandskkk
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
   private final GettingInRangeAT gettingInRangeAT = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.25);
   private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
   private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
   private final Shoot shoot = new Shoot(m_Shooter, m_intake);
-  private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led);
+  private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led, m_Shooter);
   private final OuttakeNote outtakeNote = new OuttakeNote(m_intake);
   private final AutoShoot autoShoot = new AutoShoot(m_Shooter, m_intake);
 
