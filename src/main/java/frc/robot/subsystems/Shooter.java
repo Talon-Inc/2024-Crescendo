@@ -66,7 +66,7 @@ public class Shooter extends SubsystemBase {
   }
   
   public boolean isShooterAtSpeed() {
-    double target = ShooterConstants.kSetPoint - 100;
+    double target = ShooterConstants.kSetPoint - 500;
     return m_encoderTop.getVelocity() > target && m_encoderBottom.getVelocity() > target;
   }
 
