@@ -8,11 +8,11 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.9899999999999998,
-        "y": 5.54
+        "x": 2.9753553390593273,
+        "y": 5.575355339059327
       },
       "isLocked": false,
-      "linkedName": "Mid Shoot To Note"
+      "linkedName": null
     },
     {
       "anchor": {

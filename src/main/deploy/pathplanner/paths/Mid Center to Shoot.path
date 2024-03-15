@@ -3,38 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.75,
-        "y": 5.54
+        "x": 8.27,
+        "y": 5.78
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.75,
-        "y": 5.54
+        "x": 7.100841096269087,
+        "y": 6.373314171129768
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Mid Shoot to Center"
     },
     {
       "anchor": {
-        "x": 2.94,
-        "y": 5.54
+        "x": 1.8852482149408742,
+        "y": 5.78
       },
       "prevControl": {
-        "x": 1.94,
-        "y": 5.54
+        "x": 6.37580352083781,
+        "y": 7.519341306488881
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.8,
-      "rotationDegrees": 0,
-      "rotateFast": true
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -45,8 +39,8 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
-    "rotateFast": true
+    "rotation": -5.0,
+    "rotateFast": false
   },
   "reversed": false,
   "folder": null,

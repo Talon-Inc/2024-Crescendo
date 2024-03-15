@@ -8,7 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 
-// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
@@ -56,8 +56,8 @@ public class Shooter extends SubsystemBase {
   }
 
   public void shoot() {
-    m_pidControllerTop.setReference(ShooterConstants.kSetPoint, CANSparkMax.ControlType.kVelocity);
-    m_pidControllerBottom.setReference(ShooterConstants.kSetPoint, CANSparkMax.ControlType.kVelocity);
+    m_pidControllerTop.setReference(ShooterConstants.kSetPointTop, CANSparkMax.ControlType.kVelocity);
+    m_pidControllerBottom.setReference(ShooterConstants.kSetPointTop, CANSparkMax.ControlType.kVelocity);
   }
 
   public void stop() {
@@ -66,14 +66,14 @@ public class Shooter extends SubsystemBase {
   }
   
   public boolean isShooterAtSpeed() {
-    double target = ShooterConstants.kSetPoint - 500;
+    double target = ShooterConstants.kSetPointTop - 500;
     return m_encoderTop.getVelocity() > target && m_encoderBottom.getVelocity() > target;
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    // SmartDashboard.putNumber("Shooter_Top", m_encoderTop.getVelocity());
-    // SmartDashboard.putNumber("Shooter_Bottom", m_encoderBottom.getVelocity());
+    SmartDashboard.putNumber("Shooter_Top", m_encoderTop.getVelocity());
+    SmartDashboard.putNumber("Shooter_Bottom", m_encoderBottom.getVelocity());
   }
 }

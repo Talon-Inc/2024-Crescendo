@@ -84,8 +84,8 @@ public class DriveSubsystem extends SubsystemBase {
         this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
         this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
         new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-            new PIDConstants(0.45, 0.0, 0.0), // Translation PID constants
-            new PIDConstants(0.04, 0.0, 0.0), // Rotation PID constants
+            new PIDConstants(5, 0.0, 0.0), // Translation PID constants
+            new PIDConstants(0.5, 0.0, 0.0), // Rotation PID constants
             DriveConstants.kMaxSpeedMetersPerSecond, // Max module speed, in m/s
             0.409, // Drive base radius in meters. Distance from robot center to furthest module.
             new ReplanningConfig() // Default path replanning config. See the API for the options here
@@ -110,7 +110,7 @@ public class DriveSubsystem extends SubsystemBase {
   public void periodic() {
     // Update the odometry in the periodic block
     m_odometry.update(
-        Rotation2d.fromDegrees(m_gyro.getAngle()),
+        Rotation2d.fromDegrees(-m_gyro.getAngle()),
         new SwerveModulePosition[] {
             m_frontLeft.getPosition(),
             m_frontRight.getPosition(),

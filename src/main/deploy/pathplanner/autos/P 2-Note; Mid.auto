@@ -32,12 +32,6 @@
                 "data": {
                   "pathName": "Mid Shoot To Note"
                 }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "intakeNote"
-                }
               }
             ]
           }
@@ -45,13 +39,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Mid Note To Shoot"
+            "pathName": "Mid Note to Shoot"
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "shoot"
+            "pathName": "Mid Shoot to Center"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Mid Center to Shoot"
           }
         }
       ]

@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.6,
-        "y": 4.11
+        "x": 1.07,
+        "y": 3.95
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.5708728929618117,
-        "y": 2.520787166866081
+        "x": 1.0408728929618118,
+        "y": 2.3607871668660807
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Low To Shoot"
     },
     {
       "anchor": {
@@ -32,8 +32,8 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 0.5,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 90.0,
     "maxAngularAcceleration": 45.0
   },
