@@ -6,43 +6,43 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.LED;
 import frc.robot.subsystems.Shooter;
 
-public class IntakeNote extends Command {
+public class ShootAmp extends Command {
   private final Shooter shooter;
   private final Intake intake;
-  private final LED led;
-  
-  /** Creates a new Intake. */
-  public IntakeNote(Intake intake, LED led, Shooter shooter) {
+
+  /** Creates a new ShootAmp. */
+  public ShootAmp(Shooter shooter, Intake intake) {
     this.shooter = shooter;
     this.intake = intake;
-    this.led = led;
-    addRequirements(intake);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    shooter.shootAmp();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intake.intakeNote();
+    if (shooter.isShooterAtAmpSpeed()) {
+      intake.moveIntakeChannel();
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    shooter.shootSpeaker();
+    shooter.stop();
     intake.stop();
-    led.setGold();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return intake.isNoteLoaded();
+    return false;
   }
 }

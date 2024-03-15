@@ -75,7 +75,8 @@ public final class Constants {
     public static final double kShooterMinOutput = -1.0;
     public static final double kShooterMaxOutput = 1.0;
 
-    public static final double kSetPointTop = 7000;
+    public static final double kSetPointSpeaker = 7000;
+    public static final double kSetPointTop = 1000;
     public static final double kSetPointBottom = 3125;
   }
 

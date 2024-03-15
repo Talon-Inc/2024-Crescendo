@@ -21,13 +21,13 @@ public class AutoShoot extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shooter.shoot();
+    shooter.shootSpeaker();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(shooter.isShooterAtSpeed() && intake.isNoteLoaded()) {
+    if(shooter.isShooterAtSpeakerSpeed() && intake.isNoteLoaded()) {
       intake.moveIntakeChannel();
     }
   }

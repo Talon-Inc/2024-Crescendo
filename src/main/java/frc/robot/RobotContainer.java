@@ -24,7 +24,8 @@ import frc.robot.commands.ClimbUpCommand;
 import frc.robot.commands.GettingInRangeAT;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.OuttakeNote;
-import frc.robot.commands.Shoot;
+import frc.robot.commands.ShootAmp;
+import frc.robot.commands.ShootSpeaker;
 import frc.robot.subsystems.Climb;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.Intake;
@@ -54,7 +55,8 @@ public class RobotContainer {
   private final GettingInRangeAT gettingInRangeAT = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.25);
   private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
   private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
-  private final Shoot shoot = new Shoot(m_Shooter, m_intake);
+  private final ShootAmp shootAmp = new ShootAmp(m_Shooter, m_intake);
+  private final ShootSpeaker shootSpeaker = new ShootSpeaker(m_Shooter, m_intake);
   private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led, m_Shooter);
   private final OuttakeNote outtakeNote = new OuttakeNote(m_intake);
   private final AutoShoot autoShoot = new AutoShoot(m_Shooter, m_intake);
@@ -138,7 +140,7 @@ public class RobotContainer {
 
     // Left bumper
     new JoystickButton(m_driverController, Button.kLeftBumper.value)
-        .whileTrue(new ParallelCommandGroup(shoot, new RunCommand(
+        .whileTrue(new ParallelCommandGroup(shootSpeaker, new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive)));
 

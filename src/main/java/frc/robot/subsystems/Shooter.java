@@ -55,9 +55,14 @@ public class Shooter extends SubsystemBase {
     m_shootMotorBottom.burnFlash();
   }
 
-  public void shoot() {
+  public void shootSpeaker() {
+    m_pidControllerTop.setReference(ShooterConstants.kSetPointSpeaker, CANSparkMax.ControlType.kVelocity);
+    m_pidControllerBottom.setReference(ShooterConstants.kSetPointSpeaker, CANSparkMax.ControlType.kVelocity);
+  }
+
+  public void shootAmp() {
     m_pidControllerTop.setReference(ShooterConstants.kSetPointTop, CANSparkMax.ControlType.kVelocity);
-    m_pidControllerBottom.setReference(ShooterConstants.kSetPointTop, CANSparkMax.ControlType.kVelocity);
+    m_pidControllerBottom.setReference(ShooterConstants.kSetPointBottom, CANSparkMax.ControlType.kVelocity);
   }
 
   public void stop() {
@@ -65,9 +70,15 @@ public class Shooter extends SubsystemBase {
     m_shootMotorBottom.set(0);
   }
   
-  public boolean isShooterAtSpeed() {
-    double target = ShooterConstants.kSetPointTop - 500;
+  public boolean isShooterAtSpeakerSpeed() {
+    double target = ShooterConstants.kSetPointSpeaker - 500;
     return m_encoderTop.getVelocity() > target && m_encoderBottom.getVelocity() > target;
+  }
+
+  public boolean isShooterAtAmpSpeed() {
+    double topTarget = ShooterConstants.kSetPointTop - 250;
+    double bottomTarget = ShooterConstants.kSetPointBottom - 125;
+    return m_encoderTop.getVelocity() > topTarget && m_encoderBottom.getVelocity() > bottomTarget;
   }
 
   @Override
