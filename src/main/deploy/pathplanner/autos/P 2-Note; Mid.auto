@@ -41,18 +41,6 @@
           "data": {
             "pathName": "Mid Note to Shoot"
           }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Mid Shoot to Center"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Mid Center to Shoot"
-          }
         }
       ]
     }

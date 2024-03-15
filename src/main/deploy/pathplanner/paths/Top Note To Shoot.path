@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 0.9,
-        "y": 7.0
+        "x": 0.9774373943047189,
+        "y": 7.12707325652181
       },
       "prevControl": {
-        "x": 0.8610009671325757,
-        "y": 6.990576641485824
+        "x": 0.9384383614372945,
+        "y": 7.117649898007635
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,10 +32,10 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 0.5,
-    "maxAngularVelocity": 0.0,
-    "maxAngularAcceleration": 0.0
+    "maxVelocity": 2.5,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 180.0
   },
   "goalEndState": {
     "velocity": 0,
@@ -43,10 +43,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "From Notes",
+  "folder": null,
   "previewStartingState": {
     "rotation": 0.0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

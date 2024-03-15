@@ -26,7 +26,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Low Back 2"
+            "pathName": "Low Shoot To Note"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Low Note To Shoot"
           }
         }
       ]

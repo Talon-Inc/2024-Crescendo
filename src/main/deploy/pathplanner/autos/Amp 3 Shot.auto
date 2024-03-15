@@ -34,6 +34,30 @@
           "data": {
             "pathName": "Top Note To Shoot"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Top Shoot To Center"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Top Center To Shoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "shoot"
+          }
         }
       ]
     }
