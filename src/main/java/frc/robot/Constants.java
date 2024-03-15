@@ -68,10 +68,10 @@ public final class Constants {
     public static final int kShooterSmartCurrentLimit = 20;
 
     // PID values for shooter
-    public static final double[] kShooterP = { 0.00008, 0.00008 };
-    public static final double[] kShooterI = { 0.0, 0.0 };
+    public static final double[] kShooterP = { 0.00013, 0.000014 };
+    public static final double[] kShooterI = { 0, 0.0 };
     public static final double[] kShooterD = { 0.0, 0.0 };
-    public static final double[] kShooterFF = { 0.000094, 0.000094 };
+    public static final double[] kShooterFF = { 0.0001, 0.000091 };
     public static final double kShooterMinOutput = -1.0;
     public static final double kShooterMaxOutput = 1.0;
 

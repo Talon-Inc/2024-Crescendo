@@ -145,8 +145,11 @@ public class RobotContainer {
             m_robotDrive)));
 
     // Right bumper
+    // new JoystickButton(m_driverController, Button.kBack.value)
+    // .whileTrue(outtakeNote);
+
     new JoystickButton(m_driverController, Button.kRightBumper.value)
-    .whileTrue(outtakeNote);
+    .whileTrue(shootAmp);
   }
 
   public double getSpeedMultiplier() {
