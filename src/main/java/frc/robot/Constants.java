@@ -81,6 +81,11 @@ public final class Constants {
   }
 
   public static final class DriveConstants {
+    //Teleop drift adjustment PID constants
+    public static final double kteleopRotationP = 0.0;
+    public static final double kteleopRotationI = 0.0;
+    public static final double kteleopRotationD = 0.0;
+
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
     public static final double kMaxSpeedMetersPerSecond = 4.8;

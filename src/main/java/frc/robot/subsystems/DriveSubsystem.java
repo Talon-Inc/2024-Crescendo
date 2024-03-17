@@ -10,6 +10,7 @@ import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -53,6 +54,11 @@ public class DriveSubsystem extends SubsystemBase {
   // private final ADIS16470_IMU m_gyro = new ADIS16470_IMU();
   private final AHRS m_gyro = new AHRS(SPI.Port.kMXP);
 
+  //PID for teleop drift adjustment
+  private final PIDController rotationPID;
+  private double lastMovingYaw;
+  private boolean rotating = false;
+
   // Slew rate filter variables for controlling lateral acceleration
   private double m_currentRotation = 0.0;
   private double m_currentTranslationDir = 0.0;
@@ -75,7 +81,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
-    // SmartDashboard.putNumber("test", m_gyro.getAngle());
+    rotationPID = new PIDController(DriveConstants.kteleopRotationP, DriveConstants.kteleopRotationI, DriveConstants.kteleopRotationD);
 
     // Configure AutoBuilder last
     AutoBuilder.configureHolonomic(
@@ -240,6 +246,15 @@ public class DriveSubsystem extends SubsystemBase {
     double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
     double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
     double rotDelivered = m_currentRotation * DriveConstants.kMaxAngularSpeed;
+
+    if (m_currentRotation == 0) {
+      if (rotating) {
+        lastMovingYaw = m_gyro.getAngle();
+      }
+      m_currentRotation = rotationPID.calculate(m_gyro.getAngle(), lastMovingYaw);
+    } else {
+      rotating = true;
+    }
 
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(
         fieldRelative
