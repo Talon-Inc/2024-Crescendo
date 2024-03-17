@@ -80,6 +80,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
+    lastMovingYaw = (double)m_gyro.getAngle(); // should probably be changed to getYaw()
     rotationPID = new PIDController(DriveConstants.kteleopRotationP, DriveConstants.kteleopRotationI, DriveConstants.kteleopRotationD);
 
     // Configure AutoBuilder last
