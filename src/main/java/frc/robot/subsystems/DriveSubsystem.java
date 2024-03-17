@@ -241,19 +241,20 @@ public class DriveSubsystem extends SubsystemBase {
       m_currentRotation = rot;
     }
 
-    // Convert the commanded speeds into the correct units for the drivetrain
-    double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
-    double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
-    double rotDelivered = m_currentRotation * DriveConstants.kMaxAngularSpeed;
-
     if (m_currentRotation == 0) {
       if (rotating) {
+        rotating = false;
         lastMovingYaw = m_gyro.getAngle();
       }
       m_currentRotation = rotationPID.calculate(m_gyro.getAngle(), lastMovingYaw);
     } else {
       rotating = true;
     }
+
+    // Convert the commanded speeds into the correct units for the drivetrain
+    double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
+    double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
+    double rotDelivered = m_currentRotation * DriveConstants.kMaxAngularSpeed;
 
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(
         fieldRelative
