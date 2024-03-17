@@ -51,12 +51,11 @@ public class DriveSubsystem extends SubsystemBase {
       DriveConstants.kBackRightChassisAngularOffset);
 
   // The gyro sensor
-  // private final ADIS16470_IMU m_gyro = new ADIS16470_IMU();
   private final AHRS m_gyro = new AHRS(SPI.Port.kMXP);
 
-  //PID for teleop drift adjustment
+  // PID for teleop drift adjustment
   private final PIDController rotationPID;
-  private double lastMovingYaw;
+  private double lastMovingYaw = 0.0;
   private boolean rotating = false;
 
   // Slew rate filter variables for controlling lateral acceleration

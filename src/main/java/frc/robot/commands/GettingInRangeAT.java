@@ -27,7 +27,6 @@ public class GettingInRangeAT extends Command {
     this.swerveDrive = swerveDrive;
     this.limelight = limelight;
     this.desiredDistance = desiredDistance;
-    this.tagID = tagID;
 
     // Use addRequirements() here to declare subsystem dependencies.
   }

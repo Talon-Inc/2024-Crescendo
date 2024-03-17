@@ -70,7 +70,7 @@ public class RobotContainer {
   public RobotContainer() {
     autoChooser = new SendableChooser<>();
 
-    //Register the Named Commands in Path Planner
+    // Register the Named Commands in Path Planner
     NamedCommands.registerCommand("shoot", autoShoot);
     NamedCommands.registerCommand("intakeNote", intakeNote);
 
@@ -85,7 +85,7 @@ public class RobotContainer {
     autoChooser.addOption("Shoot Test", AutoBuilder.buildAuto("Shoot Test"));
     autoChooser.addOption("Fun and Games", AutoBuilder.buildAuto("Fun And Games"));
     SmartDashboard.putData("Auto Chooser", autoChooser);
-    
+
     // Configure the button bindings
     configureButtonBindings();
 
@@ -149,11 +149,14 @@ public class RobotContainer {
     // .whileTrue(outtakeNote);
 
     new JoystickButton(m_driverController, Button.kRightBumper.value)
-    .whileTrue(shootAmp);
+        .whileTrue(shootAmp);
   }
 
+  /**
+   * @return the speed multiplier; either 1 or 0.75
+   */
   public double getSpeedMultiplier() {
-    return m_driverController.getLeftTriggerAxis() > 0.1? 1: 0.75;
+    return m_driverController.getLeftTriggerAxis() > 0.1 ? 1 : 0.75;
   }
 
   /**

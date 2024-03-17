@@ -81,7 +81,7 @@ public final class Constants {
   }
 
   public static final class DriveConstants {
-    //Teleop drift adjustment PID constants
+    // Teleop drift adjustment PID constants
     public static final double kteleopRotationP = 0.0;
     public static final double kteleopRotationI = 0.0;
     public static final double kteleopRotationD = 0.0;
