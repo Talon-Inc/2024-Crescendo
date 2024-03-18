@@ -82,7 +82,7 @@ public final class Constants {
 
   public static final class DriveConstants {
     // Teleop drift adjustment PID constants
-    public static final double kteleopRotationP = 0.0;
+    public static final double kteleopRotationP = 0.00014;
     public static final double kteleopRotationI = 0.0;
     public static final double kteleopRotationD = 0.0;
     public static final double kMinimumInput = -180.0;
@@ -160,7 +160,7 @@ public final class Constants {
 
     // PID values for driving motors
     // { FrontLeft, FrontRight, RearLeft, RearRight }
-    public static final double[] kDrivingP = { 0.18, 0.10, 0.16, 0.16 };
+    public static final double[] kDrivingP = { 0.04, 0.04, 0.04, 0.04 };
     public static final double[] kDrivingI = { 0.0, 0.0, 0.0, 0.0 };
     public static final double[] kDrivingD = { 0.05, 0.06, 0.05, 0.05 };
     public static final double[] kDrivingFF = {
