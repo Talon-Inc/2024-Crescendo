@@ -82,6 +82,7 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
     lastMovingYaw = (double)m_gyro.getAngle(); // should probably be changed to getYaw()
     rotationPID = new PIDController(DriveConstants.kteleopRotationP, DriveConstants.kteleopRotationI, DriveConstants.kteleopRotationD);
+    rotationPID.enableContinuousInput(DriveConstants.kMinimumInput, DriveConstants.kMaximumInput);
 
     // Configure AutoBuilder last
     AutoBuilder.configureHolonomic(
@@ -245,9 +246,9 @@ public class DriveSubsystem extends SubsystemBase {
     if (m_currentRotation == 0) {
       if (rotating) {
         rotating = false;
-        lastMovingYaw = m_gyro.getAngle();
+        lastMovingYaw = m_gyro.getYaw();
       }
-      m_currentRotation = rotationPID.calculate(m_gyro.getAngle(), lastMovingYaw);
+      m_currentRotation = rotationPID.calculate(m_gyro.getYaw(), lastMovingYaw);
     } else {
       rotating = true;
     }
