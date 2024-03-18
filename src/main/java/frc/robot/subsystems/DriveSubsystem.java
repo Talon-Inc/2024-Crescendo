@@ -22,7 +22,7 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SPI;
-// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
@@ -70,7 +70,7 @@ public class DriveSubsystem extends SubsystemBase {
   // Odometry class for tracking robot pose
   SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
       DriveConstants.kDriveKinematics,
-      Rotation2d.fromDegrees(m_gyro.getAngle()),
+      Rotation2d.fromDegrees(m_gyro.getYaw()),
       new SwerveModulePosition[] {
           m_frontLeft.getPosition(),
           m_frontRight.getPosition(),
@@ -80,7 +80,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
-    lastMovingYaw = (double)m_gyro.getAngle(); // should probably be changed to getYaw()
+    lastMovingYaw = (double) m_gyro.getYaw();
     rotationPID = new PIDController(DriveConstants.kteleopRotationP, DriveConstants.kteleopRotationI, DriveConstants.kteleopRotationD);
     rotationPID.enableContinuousInput(DriveConstants.kMinimumInput, DriveConstants.kMaximumInput);
 
@@ -117,7 +117,7 @@ public class DriveSubsystem extends SubsystemBase {
   public void periodic() {
     // Update the odometry in the periodic block
     m_odometry.update(
-        Rotation2d.fromDegrees(-m_gyro.getAngle()),
+        Rotation2d.fromDegrees(-m_gyro.getYaw()),
         new SwerveModulePosition[] {
             m_frontLeft.getPosition(),
             m_frontRight.getPosition(),
@@ -125,7 +125,7 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearRight.getPosition()
         });
 
-    // SmartDashboard.putNumber("yaw", m_gyro.getYaw()); // Gets updated Yaw of robot
+    SmartDashboard.putNumber("Yaw", m_gyro.getYaw()); // Gets updated Yaw of robot
     // SmartDashboard.putNumber("yaw rate", m_gyro.getRate()); // Gets the updated rate of change of yaw
     // SmartDashboard.putNumber("Mod1ABS", m_frontLeft.getEncoder());
     // SmartDashboard.putNumber("Mod2ABS", m_frontRight.getEncoder());
@@ -139,6 +139,16 @@ public class DriveSubsystem extends SubsystemBase {
     // SmartDashboard.putNumber("Mod2ANG", m_frontRight.getAngVel());
     // SmartDashboard.putNumber("Mod3ANG", m_rearLeft.getAngVel());
     // SmartDashboard.putNumber("Mod4ANG", m_rearRight.getAngVel());
+  }
+
+  /**
+   * Returns the current yaw of the gyro.
+   * Flips the sign if the gyro is reversed.
+   * 
+   * @return The yaw.
+   */
+  public double getYaw() {
+    return (double) m_gyro.getYaw() * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
   }
 
   public ChassisSpeeds getRobotRelativeSpeeds() {
@@ -172,7 +182,7 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void resetOdometry(Pose2d pose) {
     m_odometry.resetPosition(
-        Rotation2d.fromDegrees(m_gyro.getAngle()),
+        Rotation2d.fromDegrees(m_gyro.getYaw()),
         new SwerveModulePosition[] {
             m_frontLeft.getPosition(),
             m_frontRight.getPosition(),
@@ -261,7 +271,7 @@ public class DriveSubsystem extends SubsystemBase {
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(
         fieldRelative
             ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered,
-                Rotation2d.fromDegrees(-m_gyro.getAngle()))
+                Rotation2d.fromDegrees(-m_gyro.getYaw()))
             : new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered));
     SwerveDriveKinematics.desaturateWheelSpeeds(
         swerveModuleStates, DriveConstants.kMaxSpeedMetersPerSecond);
@@ -314,7 +324,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @return the robot's heading in degrees, from -180 to 180
    */
   public double getHeading() {
-    return Rotation2d.fromDegrees(m_gyro.getAngle()).getDegrees();
+    return Rotation2d.fromDegrees(m_gyro.getYaw()).getDegrees();
   }
 
   /**
