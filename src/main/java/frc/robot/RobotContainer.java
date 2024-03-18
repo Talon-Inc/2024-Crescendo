@@ -151,6 +151,10 @@ public class RobotContainer {
         .whileTrue(new ParallelCommandGroup(shootAmp, new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive)));
+
+    // Right stick
+    new JoystickButton(m_driverController, Button.kRightStick.value)
+        .whileTrue(outtakeNote);
   }
 
   public double getSpeedMultiplier() {
