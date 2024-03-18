@@ -70,7 +70,7 @@ public class DriveSubsystem extends SubsystemBase {
   // Odometry class for tracking robot pose
   SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
       DriveConstants.kDriveKinematics,
-      Rotation2d.fromDegrees(m_gyro.getYaw()),
+      Rotation2d.fromDegrees(getYaw()),
       new SwerveModulePosition[] {
           m_frontLeft.getPosition(),
           m_frontRight.getPosition(),
@@ -80,7 +80,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
-    lastMovingYaw = (double) m_gyro.getYaw();
+    lastMovingYaw = getYaw();
     rotationPID = new PIDController(DriveConstants.kteleopRotationP, DriveConstants.kteleopRotationI, DriveConstants.kteleopRotationD);
     rotationPID.enableContinuousInput(DriveConstants.kMinimumInput, DriveConstants.kMaximumInput);
 
@@ -117,7 +117,7 @@ public class DriveSubsystem extends SubsystemBase {
   public void periodic() {
     // Update the odometry in the periodic block
     m_odometry.update(
-        Rotation2d.fromDegrees(-m_gyro.getYaw()),
+        Rotation2d.fromDegrees(getYaw()),
         new SwerveModulePosition[] {
             m_frontLeft.getPosition(),
             m_frontRight.getPosition(),
@@ -125,7 +125,7 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearRight.getPosition()
         });
 
-    SmartDashboard.putNumber("Yaw", m_gyro.getYaw()); // Gets updated Yaw of robot
+    SmartDashboard.putNumber("Yaw", getYaw()); // Gets updated Yaw of robot
     // SmartDashboard.putNumber("yaw rate", m_gyro.getRate()); // Gets the updated rate of change of yaw
     // SmartDashboard.putNumber("Mod1ABS", m_frontLeft.getEncoder());
     // SmartDashboard.putNumber("Mod2ABS", m_frontRight.getEncoder());
@@ -182,7 +182,7 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void resetOdometry(Pose2d pose) {
     m_odometry.resetPosition(
-        Rotation2d.fromDegrees(m_gyro.getYaw()),
+        Rotation2d.fromDegrees(getYaw()),
         new SwerveModulePosition[] {
             m_frontLeft.getPosition(),
             m_frontRight.getPosition(),
@@ -256,9 +256,9 @@ public class DriveSubsystem extends SubsystemBase {
     if (m_currentRotation == 0) {
       if (rotating) {
         rotating = false;
-        lastMovingYaw = m_gyro.getYaw();
+        lastMovingYaw = getYaw();
       }
-      m_currentRotation = rotationPID.calculate(m_gyro.getYaw(), lastMovingYaw);
+      m_currentRotation = rotationPID.calculate(getYaw(), lastMovingYaw);
     } else {
       rotating = true;
     }
@@ -271,7 +271,7 @@ public class DriveSubsystem extends SubsystemBase {
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(
         fieldRelative
             ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered,
-                Rotation2d.fromDegrees(-m_gyro.getYaw()))
+                Rotation2d.fromDegrees(getYaw()))
             : new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered));
     SwerveDriveKinematics.desaturateWheelSpeeds(
         swerveModuleStates, DriveConstants.kMaxSpeedMetersPerSecond);
@@ -324,7 +324,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @return the robot's heading in degrees, from -180 to 180
    */
   public double getHeading() {
-    return Rotation2d.fromDegrees(m_gyro.getYaw()).getDegrees();
+    return Rotation2d.fromDegrees(getYaw()).getDegrees();
   }
 
   /**
