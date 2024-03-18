@@ -82,7 +82,9 @@ public class RobotContainer {
     autoChooser.addOption("P 2-Note; High", AutoBuilder.buildAuto("P 2-Note; High"));
     autoChooser.addOption("P 2-Note; Mid", AutoBuilder.buildAuto("P 2-Note; Mid"));
     autoChooser.addOption("P 2-Note; Low", AutoBuilder.buildAuto("P 2-Note; Low"));
-    autoChooser.addOption("Shoot Test", AutoBuilder.buildAuto("Shoot Test"));
+    autoChooser.addOption("Amp 3 Shot", AutoBuilder.buildAuto("Amp 3 Shot"));
+    autoChooser.addOption("Source 3 Shot", AutoBuilder.buildAuto("Source 3 Shot"));
+    autoChooser.addOption("Mid 4 Shot", AutoBuilder.buildAuto("Mid 4 Shot"));
     autoChooser.addOption("Fun and Games", AutoBuilder.buildAuto("Fun And Games"));
     SmartDashboard.putData("Auto Chooser", autoChooser);
 
@@ -114,7 +116,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // A button (Resets the field relativity)
     new JoystickButton(m_driverController, Button.kA.value)
-        .onTrue(new RunCommand(
+        .whileTrue(new RunCommand(
             () -> m_robotDrive.zeroHeading(),
             m_robotDrive));
 
@@ -146,12 +148,11 @@ public class RobotContainer {
 
     // Right bumper
     new JoystickButton(m_driverController, Button.kRightBumper.value)
-        .whileTrue(shootAmp);
+        .whileTrue(new ParallelCommandGroup(shootAmp, new RunCommand(
+            () -> m_robotDrive.setX(),
+            m_robotDrive)));
   }
 
-  /**
-   * @return the speed multiplier; either 1 or 0.75
-   */
   public double getSpeedMultiplier() {
     return m_driverController.getLeftTriggerAxis() > 0.1 ? 1 : 0.75;
   }
