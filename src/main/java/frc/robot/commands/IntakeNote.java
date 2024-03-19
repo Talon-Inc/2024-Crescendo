@@ -35,7 +35,7 @@ public class IntakeNote extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    shooter.shootSpeaker();
+    shooter.shootAmp();
     intake.stop();
     led.setGold();
   }
