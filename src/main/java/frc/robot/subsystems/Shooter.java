@@ -76,9 +76,11 @@ public class Shooter extends SubsystemBase {
   }
 
   public boolean isShooterAtAmpSpeed() {
-    double topTarget = ShooterConstants.kSetPointTop - 250;
-    double bottomTarget = ShooterConstants.kSetPointBottom - 125;
-    return m_encoderTop.getVelocity() > topTarget && m_encoderBottom.getVelocity() > bottomTarget;
+    double topMinSpeed = ShooterConstants.kSetPointTop - 250;
+    double bottomMinspeed = ShooterConstants.kSetPointBottom - 125;
+    double topMaxSpeed = ShooterConstants.kSetPointTop + 250;
+    double bottomMaxSpeed = ShooterConstants.kSetPointBottom + 125;
+    return (m_encoderTop.getVelocity() > topMinSpeed && m_encoderTop.getVelocity() < topMaxSpeed)  &&  (m_encoderBottom.getVelocity() > bottomMinspeed && m_encoderBottom.getVelocity() < bottomMaxSpeed);
   }
 
   @Override
