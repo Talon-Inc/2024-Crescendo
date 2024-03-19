@@ -32,6 +32,12 @@
                 "data": {
                   "pathName": "Mid Shoot To Note"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
               }
             ]
           }

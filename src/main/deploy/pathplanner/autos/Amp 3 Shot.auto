@@ -24,9 +24,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Top Shoot To Note"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Top Shoot To Note"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              }
+            ]
           }
         },
         {
@@ -42,9 +55,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Top Shoot To Center"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Top Shoot To Center"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              }
+            ]
           }
         },
         {

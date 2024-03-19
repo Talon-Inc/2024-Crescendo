@@ -24,9 +24,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Mid Shoot To Note"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Mid Shoot To Note"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              }
+            ]
           }
         },
         {
@@ -42,9 +55,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Mid Shoot To Top Note"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Mid Shoot To Top Note"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              }
+            ]
           }
         },
         {
@@ -60,9 +86,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Mid Shoot To Low Note"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Mid Shoot To Low Note"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "intakeNote"
+                }
+              }
+            ]
           }
         },
         {
