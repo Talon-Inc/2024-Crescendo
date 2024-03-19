@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
@@ -11,23 +12,26 @@ import frc.robot.subsystems.Shooter;
 public class ShootSpeaker extends Command {
   private final Shooter shooter;
   private final Intake intake;
+  private final Timer timer;
   
   /** Creates a new Shoot. */
   public ShootSpeaker(Shooter shooter, Intake intake) {
     this.shooter = shooter;
     this.intake = intake;
+    timer = new Timer();
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     shooter.shootSpeaker();
+    timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(shooter.isShooterAtSpeakerSpeed()) {
+    if(shooter.isShooterAtSpeakerSpeed() || timer.hasElapsed(2)) {
       intake.moveIntakeChannel();
     }
   }
