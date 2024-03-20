@@ -162,7 +162,7 @@ public final class Constants {
     // { FrontLeft, FrontRight, RearLeft, RearRight }
     public static final double[] kDrivingP = { 0.04, 0.04, 0.04, 0.04 };
     public static final double[] kDrivingI = { 0.0, 0.0, 0.0, 0.0 };
-    public static final double[] kDrivingD = { 0.05, 0.06, 0.05, 0.05 };
+    public static final double[] kDrivingD = { 0.0, 0.0, 0.0, 0.0 };
     public static final double[] kDrivingFF = {
       1 / kDriveWheelFreeSpeedRps,
       1 / kDriveWheelFreeSpeedRps,
