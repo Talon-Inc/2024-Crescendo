@@ -53,7 +53,7 @@ public final class Constants {
     public static final int kCurrentLimit = 40;
 
     // Intake speed
-    public static final double kSpeed = 0.45;
+    public static final double kSpeed = 0.55;
 
     // Photo sensor port
     public static final int kSensorAnalogPort = 0;
@@ -82,7 +82,7 @@ public final class Constants {
 
   public static final class DriveConstants {
     // Teleop drift adjustment PID constants
-    public static final double kteleopRotationP = 0.00014;
+    public static final double kteleopRotationP = 0.0004;
     public static final double kteleopRotationI = 0.0;
     public static final double kteleopRotationD = 0.0;
     public static final double kMinimumInput = -180.0;

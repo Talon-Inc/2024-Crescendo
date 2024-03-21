@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LED;
@@ -35,7 +36,12 @@ public class IntakeNote extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    shooter.shootAmp();
+    if (DriverStation.isAutonomous()) {
+      shooter.shootSpeaker();
+    }
+    else {
+      shooter.shootAmp();
+    }
     intake.stop();
     led.setGold();
   }

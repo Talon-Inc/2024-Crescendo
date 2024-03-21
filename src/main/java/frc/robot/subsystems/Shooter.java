@@ -80,7 +80,7 @@ public class Shooter extends SubsystemBase {
     double bottomMinspeed = ShooterConstants.kSetPointBottom - 125;
     double topMaxSpeed = ShooterConstants.kSetPointTop + 250;
     double bottomMaxSpeed = ShooterConstants.kSetPointBottom + 125;
-    return (m_encoderTop.getVelocity() > topMinSpeed && m_encoderTop.getVelocity() < topMaxSpeed)  &&  (m_encoderBottom.getVelocity() > bottomMinspeed && m_encoderBottom.getVelocity() < bottomMaxSpeed);
+    return (topMinSpeed < m_encoderTop.getVelocity() && m_encoderTop.getVelocity() < topMaxSpeed) && (bottomMinspeed < m_encoderBottom.getVelocity() && m_encoderBottom.getVelocity() < bottomMaxSpeed);
   }
 
   @Override

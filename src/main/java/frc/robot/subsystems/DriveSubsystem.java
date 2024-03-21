@@ -22,7 +22,7 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
@@ -125,7 +125,7 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearRight.getPosition()
         });
 
-    SmartDashboard.putNumber("Yaw", getYaw()); // Gets updated Yaw of robot
+    // SmartDashboard.putNumber("Yaw", getYaw()); // Gets updated Yaw of robot
     // SmartDashboard.putNumber("yaw rate", m_gyro.getRate()); // Gets the updated rate of change of yaw
     // SmartDashboard.putNumber("Mod1ABS", m_frontLeft.getEncoder());
     // SmartDashboard.putNumber("Mod2ABS", m_frontRight.getEncoder());
