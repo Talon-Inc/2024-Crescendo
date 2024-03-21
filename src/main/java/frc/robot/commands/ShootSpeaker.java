@@ -7,15 +7,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.LED;
 import frc.robot.subsystems.Shooter;
 
 public class ShootSpeaker extends Command {
   private final Shooter shooter;
   private final Intake intake;
+  private final LED led;
   private final Timer timer;
   
   /** Creates a new Shoot. */
-  public ShootSpeaker(Shooter shooter, Intake intake) {
+  public ShootSpeaker(Shooter shooter, Intake intake, LED led) {
+    this.led = led;
     this.shooter = shooter;
     this.intake = intake;
     timer = new Timer();
@@ -41,6 +44,7 @@ public class ShootSpeaker extends Command {
   public void end(boolean interrupted) {
     shooter.stop();
     intake.stop();
+    led.setBlack();
   }
 
   // Returns true when the command should end.

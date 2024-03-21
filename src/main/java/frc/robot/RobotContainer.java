@@ -55,10 +55,10 @@ public class RobotContainer {
   private final GettingInRangeAT gettingInRangeAT = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.25);
   private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
   private final ClimbUpCommand climbUp = new ClimbUpCommand(m_Climb);
-  private final ShootAmp shootAmp = new ShootAmp(m_Shooter, m_intake);
-  private final ShootSpeaker shootSpeaker = new ShootSpeaker(m_Shooter, m_intake);
+  private final ShootAmp shootAmp = new ShootAmp(m_Shooter, m_intake, m_led);
+  private final ShootSpeaker shootSpeaker = new ShootSpeaker(m_Shooter, m_intake, m_led);
   private final IntakeNote intakeNote = new IntakeNote(m_intake, m_led, m_Shooter);
-  private final OuttakeNote outtakeNote = new OuttakeNote(m_intake);
+  private final OuttakeNote outtakeNote = new OuttakeNote(m_intake, m_led);
   private final AutoShoot autoShoot = new AutoShoot(m_Shooter, m_intake);
 
   // The driver's controller
@@ -90,6 +90,9 @@ public class RobotContainer {
 
     // Configure the button bindings
     configureButtonBindings();
+
+    // Set LED to off
+    m_led.setBlack();
 
     // Configure default commands
     m_robotDrive.setDefaultCommand(
