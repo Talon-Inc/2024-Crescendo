@@ -24,19 +24,32 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "race",
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "wait",
                 "data": {
-                  "pathName": "Low Shoot To Note"
+                  "waitTime": 2.7
                 }
               },
               {
-                "type": "named",
+                "type": "parallel",
                 "data": {
-                  "name": "intakeNote"
+                  "commands": [
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Low Shoot To Note"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "intakeNote"
+                      }
+                    }
+                  ]
                 }
               }
             ]
