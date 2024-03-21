@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -171,5 +172,9 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     return autoChooser.getSelected();
+  }
+
+  public Command turnOffLED() {
+    return new InstantCommand(() -> m_led.setBlack(), m_led);
   }
 }

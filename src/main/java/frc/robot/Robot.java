@@ -82,6 +82,9 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
+    // Turn off LED at teleop start
+    m_robotContainer.turnOffLED().schedule();
   }
 
   /** This function is called periodically during operator control. */
