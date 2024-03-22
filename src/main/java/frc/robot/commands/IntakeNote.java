@@ -43,7 +43,9 @@ public class IntakeNote extends Command {
       shooter.shootAmp();
     }
     intake.stop();
-    led.setGold();
+    if (intake.isNoteLoaded()) {
+      led.setGold();
+    }
   }
 
   // Returns true when the command should end.
