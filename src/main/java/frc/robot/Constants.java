@@ -53,7 +53,7 @@ public final class Constants {
     public static final int kCurrentLimit = 40;
 
     // Intake speed
-    public static final double kSpeed = 0.55;
+    public static final double kSpeed = 0.5;
 
     // Photo sensor port
     public static final int kSensorAnalogPort = 0;
