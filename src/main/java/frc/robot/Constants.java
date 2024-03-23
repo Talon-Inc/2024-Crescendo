@@ -53,7 +53,7 @@ public final class Constants {
     public static final int kCurrentLimit = 40;
 
     // Intake speed
-    public static final double kSpeed = 0.47;
+    public static final double kSpeed = 0.45;
 
     // Photo sensor port
     public static final int kSensorAnalogPort = 0;
@@ -75,7 +75,7 @@ public final class Constants {
     public static final double kShooterMinOutput = -1.0;
     public static final double kShooterMaxOutput = 1.0;
 
-    public static final double kSetPointSpeaker = 7000;
+    public static final double kSetPointSpeaker = 7500;
     public static final double kSetPointTop = 1000;
     public static final double kSetPointBottom = 3125;
   }
