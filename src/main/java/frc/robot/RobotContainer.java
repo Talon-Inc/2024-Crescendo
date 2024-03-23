@@ -120,7 +120,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // A button (Resets the field relativity)
     new JoystickButton(m_driverController, Button.kA.value)
-        .whileTrue(new RunCommand(
+        .whileTrue(new InstantCommand(
             () -> m_robotDrive.zeroHeading(),
             m_robotDrive));
 
