@@ -58,7 +58,7 @@ public class Intake extends SubsystemBase {
   }
 
   public boolean isIntakeRunning() {
-    return m_intakeMotor1.getEncoder().getVelocity() > 0;
+    return Math.abs(m_intakeMotor1.getEncoder().getVelocity()) > 0.1;
   }
 
   @Override

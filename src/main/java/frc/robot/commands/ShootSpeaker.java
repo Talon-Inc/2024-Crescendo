@@ -35,6 +35,7 @@ public class ShootSpeaker extends Command {
   @Override
   public void execute() {
     if(shooter.isShooterAtSpeakerSpeed() || timer.hasElapsed(2)) {
+      Timer.delay(0.1);
       intake.moveIntakeChannel();
     }
   }
