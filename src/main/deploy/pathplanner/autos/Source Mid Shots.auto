@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.24,
-      "y": 5.54
+      "x": 0.73,
+      "y": 4.56
     },
-    "rotation": 0
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Mid To Shoot"
+            "pathName": "Low To Shoot"
           }
         },
         {
@@ -30,7 +30,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 2.0
+                  "waitTime": 3.95
                 }
               },
               {
@@ -40,7 +40,7 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Mid Shoot To Note"
+                        "pathName": "Low Shoot To Center 2"
                       }
                     },
                     {
@@ -58,7 +58,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Mid Note to Shoot"
+            "pathName": "Low Center To Shoot 2"
           }
         },
         {
@@ -74,7 +74,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 2.25
+                  "waitTime": 3.3
                 }
               },
               {
@@ -84,7 +84,7 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "Mid Shoot To Top Note"
+                        "pathName": "Low Shoot To Center"
                       }
                     },
                     {
@@ -102,82 +102,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Mid Top Note To Shoot"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shoot"
-          }
-        },
-        {
-          "type": "race",
-          "data": {
-            "commands": [
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 2.0
-                }
-              },
-              {
-                "type": "parallel",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Mid Shoot To Low Note"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "intakeNote"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Mid Low Note To Shoot"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "shoot"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Mid To Center"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "intakeNote"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Mid Center To Shoot 2"
+            "pathName": "Low Center To Shoot"
           }
         },
         {
