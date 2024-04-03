@@ -61,7 +61,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public void shootAmp() {
-    m_pidControllerTop.setReference(ShooterConstants.kSetPointTop, CANSparkMax.ControlType.kVelocity);
+    // m_pidControllerTop.setReference(ShooterConstants.kSetPointTop, CANSparkMax.ControlType.kVelocity);
     m_pidControllerBottom.setReference(ShooterConstants.kSetPointBottom, CANSparkMax.ControlType.kVelocity);
   }
 
@@ -80,7 +80,8 @@ public class Shooter extends SubsystemBase {
     double bottomMinspeed = ShooterConstants.kSetPointBottom - 125;
     double topMaxSpeed = ShooterConstants.kSetPointTop + 250;
     double bottomMaxSpeed = ShooterConstants.kSetPointBottom + 125;
-    return (topMinSpeed < m_encoderTop.getVelocity() && m_encoderTop.getVelocity() < topMaxSpeed) && (bottomMinspeed < m_encoderBottom.getVelocity() && m_encoderBottom.getVelocity() < bottomMaxSpeed);
+    // (topMinSpeed < m_encoderTop.getVelocity() && m_encoderTop.getVelocity() < topMaxSpeed) && 
+    return (bottomMinspeed < m_encoderBottom.getVelocity() && m_encoderBottom.getVelocity() < bottomMaxSpeed);
   }
 
   @Override

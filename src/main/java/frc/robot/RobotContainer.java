@@ -85,6 +85,7 @@ public class RobotContainer {
     autoChooser.addOption("P 2-Note; Low", AutoBuilder.buildAuto("P 2-Note; Low"));
     autoChooser.addOption("Amp 3 Shot", AutoBuilder.buildAuto("Amp 3 Shot"));
     autoChooser.addOption("Source 3 Shot", AutoBuilder.buildAuto("Source 3 Shot"));
+    autoChooser.addOption("Source Mid Shots", AutoBuilder.buildAuto("Source Mid Shots"));
     autoChooser.addOption("Mid 4 Shot", AutoBuilder.buildAuto("Mid 4 Shot"));
     autoChooser.addOption("Fun and Games", AutoBuilder.buildAuto("Fun And Games"));
     SmartDashboard.putData("Auto Chooser", autoChooser);

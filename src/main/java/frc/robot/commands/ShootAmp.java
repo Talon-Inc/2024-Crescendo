@@ -35,6 +35,7 @@ public class ShootAmp extends Command {
   @Override
   public void execute() {
     if (shooter.isShooterAtAmpSpeed() || timer.hasElapsed(2)) {
+      Timer.delay(0.1);
       intake.moveIntakeChannel();
     }
   }

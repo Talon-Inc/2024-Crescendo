@@ -77,7 +77,7 @@ public final class Constants {
 
     public static final double kSetPointSpeaker = 7500;
     public static final double kSetPointTop = 1000;
-    public static final double kSetPointBottom = 3125;
+    public static final double kSetPointBottom = 2600;
   }
 
   public static final class DriveConstants {
