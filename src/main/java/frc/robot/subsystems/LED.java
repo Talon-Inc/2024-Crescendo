@@ -34,6 +34,7 @@ public class LED extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    // Keep blinkin busy to prevent garbage pulse switching it to 5V
     led.set(color);
   }
 }
