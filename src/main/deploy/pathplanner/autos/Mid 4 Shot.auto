@@ -12,9 +12,22 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "Mid To Shoot"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Mid To Shoot"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "runShooter"
+                }
+              }
+            ]
           }
         },
         {

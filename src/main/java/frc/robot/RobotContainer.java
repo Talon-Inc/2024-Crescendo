@@ -51,7 +51,7 @@ public class RobotContainer {
   private final Intake m_intake = new Intake();
   private final LED m_led = new LED();
 
-  // The robot's commandskkk
+  // The robot's commands
   private final AprilTagAiming aprilTagAiming = new AprilTagAiming(m_robotDrive, m_Limelight);
   private final GettingInRangeAT gettingInRangeAT = new GettingInRangeAT(m_robotDrive, m_Limelight, 1.25);
   private final ClimbDownCommand climbDown = new ClimbDownCommand(m_Climb);
@@ -72,6 +72,9 @@ public class RobotContainer {
     autoChooser = new SendableChooser<>();
 
     // Register the Named Commands in Path Planner
+    NamedCommands.registerCommand("runShooter", new InstantCommand(
+        () -> m_Shooter.shootSpeaker(),
+        m_Shooter));
     NamedCommands.registerCommand("shoot", autoShoot);
     NamedCommands.registerCommand("intakeNote", intakeNote);
 
