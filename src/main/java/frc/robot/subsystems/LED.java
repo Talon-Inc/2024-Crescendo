@@ -10,28 +10,30 @@ import frc.robot.Constants.LedConstants;
 
 public class LED extends SubsystemBase {
   private final PWMSparkMax led = new PWMSparkMax(LedConstants.kLedChannel);
+  private double color = 0.99;
 
   /** Creates a new LED. */
   public LED() {}
 
   public void setBlack() {
-    led.set(0.99);
+    color = 0.99;
   }
 
   public void setGreen() {
-    led.set(0.77);
+    color = 0.77;
   }
 
   public void setGold() {
-    led.set(0.67);
+    color = 0.67;
   }
 
   public void strobeGold() {
-    led.set(0.35);
+    color = 0.35;
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    led.set(color);
   }
 }
