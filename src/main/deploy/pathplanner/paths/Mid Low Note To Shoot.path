@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.89,
-        "y": 4.19
+        "x": 2.8909454969907094,
+        "y": 4.186507290393498
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.901142664423097,
-        "y": 4.643387329054944
+        "x": 2.9020881614138063,
+        "y": 4.639894619448442
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Mid Link 3"
     },
     {
       "anchor": {

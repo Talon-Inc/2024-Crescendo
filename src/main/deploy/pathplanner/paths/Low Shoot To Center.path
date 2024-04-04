@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.98,
-        "y": 4.13
+        "x": 0.9,
+        "y": 4.27
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.457029104480556,
-        "y": 0.057845381928815165
+        "x": 1.3770291044805558,
+        "y": 0.19784538192881485
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Source Link 1"
     },
     {
       "anchor": {
@@ -40,7 +40,7 @@
   "goalEndState": {
     "velocity": 0,
     "rotation": 0,
-    "rotateFast": false
+    "rotateFast": true
   },
   "reversed": false,
   "folder": null,
