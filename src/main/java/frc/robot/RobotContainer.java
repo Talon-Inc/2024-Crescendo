@@ -160,6 +160,11 @@ public class RobotContainer {
             () -> m_robotDrive.setX(),
             m_robotDrive)));
 
+    // Left stick
+    new JoystickButton(m_driverController, Button.kLeftStick.value)
+        .whileTrue(new InstantCommand(
+            () -> m_led.set12V(), m_led));
+
     // Right stick
     new JoystickButton(m_driverController, Button.kRightStick.value)
         .whileTrue(outtakeNote);
