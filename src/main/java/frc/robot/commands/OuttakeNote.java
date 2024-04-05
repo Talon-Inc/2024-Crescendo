@@ -31,7 +31,7 @@ public class OuttakeNote extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    led.setBlack();
+    led.setViolet();
     intake.stop();
   }
 

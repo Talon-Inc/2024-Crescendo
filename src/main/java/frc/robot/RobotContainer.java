@@ -96,8 +96,8 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    // Set LED to off
-    m_led.setBlack();
+    // Set LED to violet
+    m_led.setViolet();
 
     // Configure default commands
     m_robotDrive.setDefaultCommand(
@@ -174,7 +174,12 @@ public class RobotContainer {
     return autoChooser.getSelected();
   }
 
-  public Command turnOffLED() {
-    return new InstantCommand(() -> m_led.setBlack(), m_led);
+  /**
+   * Used to set LEDs to violet at the start of teleop.
+   * 
+   * @return command to set LEDs to violet
+   */
+  public Command changeLEDtoViolet() {
+    return new InstantCommand(() -> m_led.setViolet(), m_led);
   }
 }

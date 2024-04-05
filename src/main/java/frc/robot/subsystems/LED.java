@@ -19,6 +19,10 @@ public class LED extends SubsystemBase {
     color = 0.99;
   }
 
+  public void setViolet() {
+    color = 0.91;
+  }
+
   public void setGreen() {
     color = 0.77;
   }

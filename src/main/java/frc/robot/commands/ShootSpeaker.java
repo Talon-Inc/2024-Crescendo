@@ -45,7 +45,7 @@ public class ShootSpeaker extends Command {
   public void end(boolean interrupted) {
     shooter.stop();
     intake.stop();
-    led.setBlack();
+    led.setViolet();
   }
 
   // Returns true when the command should end.
