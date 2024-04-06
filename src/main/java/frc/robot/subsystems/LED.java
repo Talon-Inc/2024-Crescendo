@@ -21,7 +21,7 @@ public class LED extends SubsystemBase {
 
   public void setViolet() {
     color = 0.91;
-    set12V();
+    setLEDVoltage();
   }
 
   public void setGreen() {
@@ -30,19 +30,18 @@ public class LED extends SubsystemBase {
 
   public void setGold() {
     color = 0.67;
-    set12V();
+    setLEDVoltage();
   }
 
   public void strobeGold() {
     color = 0.35;
   }
 
-  public void set12V() {
+  public void setLEDVoltage() {
     // 5V strip = 2125us
+    led.setPulseTimeMicroseconds(2125);
     // 12V strip = 2145us
-    // math?
-    // 2145us = 2.145ms = 1.5ms + 0.645ms ~> 1000 + 645 = 1645?
-    led.setPulseTimeMicroseconds(2145);
+    // led.setPulseTimeMicroseconds(2145);
   }
 
   @Override
