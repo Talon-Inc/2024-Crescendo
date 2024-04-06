@@ -163,7 +163,7 @@ public class RobotContainer {
     // Left stick
     new JoystickButton(m_driverController, Button.kLeftStick.value)
         .whileTrue(new InstantCommand(
-            () -> m_led.set12V(), m_led));
+            () -> m_led.setLEDVoltage(), m_led));
 
     // Right stick
     new JoystickButton(m_driverController, Button.kRightStick.value)
