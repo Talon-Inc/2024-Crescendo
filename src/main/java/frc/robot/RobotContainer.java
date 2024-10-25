@@ -8,8 +8,10 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Button;
+//import edu.wpi.first.wpilibj.XboxController;
+//import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj.PS5Controller;
+import edu.wpi.first.wpilibj.PS5Controller.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -63,7 +65,7 @@ public class RobotContainer {
   private final AutoShoot autoShoot = new AutoShoot(m_Shooter, m_intake);
 
   // The driver's controller
-  XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+  PS5Controller m_driverController = new PS5Controller(OIConstants.kDriverControllerPort);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -117,56 +119,56 @@ public class RobotContainer {
    * created by
    * instantiating a {@link edu.wpi.first.wpilibj.GenericHID} or one of its
    * subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then calling
+   * edu.wpi.first.wpilibj.Joystick} or {@link PS5Controller}), and then calling
    * passing it to a
    * {@link JoystickButton}.
    */
   private void configureButtonBindings() {
-    // A button (Resets the field relativity)
-    new JoystickButton(m_driverController, Button.kA.value)
+    // X button (Resets the field relativity)
+    new JoystickButton(m_driverController, Button.kCross.value)
         .whileTrue(new InstantCommand(
             () -> m_robotDrive.zeroHeading(),
             m_robotDrive));
 
-    // B button
-    new JoystickButton(m_driverController, Button.kB.value)
+    // O (Circle) button
+    new JoystickButton(m_driverController, Button.kCircle.value)
         .whileTrue(aprilTagAiming);
 
-    // X button
-    new JoystickButton(m_driverController, Button.kX.value)
+    // Square button
+    new JoystickButton(m_driverController, Button.kSquare.value)
         .toggleOnTrue(intakeNote);
 
-    // Y button
-    new JoystickButton(m_driverController, Button.kY.value)
+    // Triangle button
+    new JoystickButton(m_driverController, Button.kTriangle.value)
         .whileTrue(gettingInRangeAT);
 
-    // Start button
-    new JoystickButton(m_driverController, Button.kStart.value)
+    // Options button
+    new JoystickButton(m_driverController, Button.kOptions.value)
         .whileTrue(climbUp);
 
-    // Back button
-    new JoystickButton(m_driverController, Button.kBack.value)
+    // Create/Screenshot button
+    new JoystickButton(m_driverController, Button.kCreate.value)
         .whileTrue(climbDown);
 
-    // Left bumper
-    new JoystickButton(m_driverController, Button.kLeftBumper.value)
+    // L1 bumper
+    new JoystickButton(m_driverController, Button.kL1.value)
         .whileTrue(new ParallelCommandGroup(shootSpeaker, new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive)));
 
-    // Right bumper
-    new JoystickButton(m_driverController, Button.kRightBumper.value)
+    // R1 bumper
+    new JoystickButton(m_driverController, Button.kR1.value)
         .whileTrue(new ParallelCommandGroup(shootAmp, new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive)));
 
     // Left stick
-    new JoystickButton(m_driverController, Button.kLeftStick.value)
+    new JoystickButton(m_driverController, Button.kL3.value)
         .whileTrue(new InstantCommand(
             () -> m_led.setLEDVoltage(), m_led));
 
     // Right stick
-    new JoystickButton(m_driverController, Button.kRightStick.value)
+    new JoystickButton(m_driverController, Button.kR3.value)
         .whileTrue(outtakeNote);
   }
 
