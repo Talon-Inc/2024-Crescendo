@@ -103,7 +103,7 @@ public class RobotContainer {
     m_robotDrive.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick.
-        // Double Behind m_driverController is the Robot Speed
+        // Double Behind m_driverController is the Robot Speed (Max 1.0 Min 0.1)
         new RunCommand(
             () -> m_robotDrive.drive(
                 -MathUtil.applyDeadband(0.2*m_driverController.getLeftY(), OIConstants.kDriveDeadband),
